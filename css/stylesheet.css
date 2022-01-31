@@ -6,20 +6,43 @@ h1,h2,h3,p {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#checkbox {
+/* #checkbox {
     display: none;
-}
-.btn{
+} */
+.btn span{
     position: absolute;
-    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 10em;
-    width: 10em;
-    background-color: var(--btn-color);
+    background-color: var(--bg-color);
+}
+#checkbox + .btn{
+    --bg-color: var(--btn-color);
 }
 #checkbox:checked + .btn{
-    background-color: var(--btn-checked-color);
+    --bg-color: var(--btn-checked-color);
+}
+span.middle{
+    width: 17.32em;
+    top: 50%;
+}
+span.top{
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    border-bottom: 5em solid var(--bg-color);
+    border-left: 8.66em solid transparent;
+    border-right: 8.66em solid transparent;
+    top: calc(50% - 7.5em);
+}
+span.bottom{
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    border-top: 5em solid var(--bg-color);
+    border-left: 8.66em solid transparent;
+    border-right: 8.66em solid transparent;
+    top: calc(50% + 7.5em);
 }
 @media (prefers-color-scheme: light) {
     :root{
