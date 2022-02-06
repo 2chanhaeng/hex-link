@@ -43,17 +43,43 @@ input[type="checkbox"]:checked + .center{
     transform: translate(-50%, -50%);
 }
 #a .center {
-    top: 50vh;
-    left: 50vw;
+    left: calc(var(--x-center) + var(--relative-x-of-aig));
+    top:  calc(var(--y-center) + var(--relative-y-of-abc));
 }
 #b .center {
-    top: 50vh;
-    left: 30vw;
+    left: calc(var(--x-center) + var(--relative-x-of-bjr));
+    top:  calc(var(--y-center) + var(--relative-y-of-abc));
 }
 :root{
-    --hexagon-width: 10vh;
+    --hexagon-width: 5vw;
     --hexagon-height: calc(var(--hexagon-width) * 1.55);
     --hexagon-border-radius: calc(var(--hexagon-height) / 10);
+    --hexagon-diagonal: calc(var(--hexagon-width) * 1.782);
+    /* https://www.wolframalpha.com/input?i=%7B%7B%28x-0.845%29%5E2%2B%28y-1.395%29%5E2%3D0.155%5E2%7D%2C%7By%3Dsqrt%283%29*x%7D%7D
+    https://www.wolframalpha.com/input?i=abs%281%2F800+%28169+%2B+279+sqrt%283%29+%2B+sqrt%28-159680+%2B+94302+sqrt%283%29%29%29%2Bi%2F800+%28837+%2B+169+sqrt%283%29+%2B+sqrt%286+%28-79840+%2B+47151+sqrt%283%29%29%29%29%29 */
+    
+    --x-center: 50vw;
+    --y-center: 50vh;
+    --x-space: calc(1.732 * var(--y-space));
+    --y-space: 1vh;
+
+    --relative-x-of-h:   calc(-1 * var(--relative-x-of-l));
+    --relative-x-of-dm:  calc(-1 * var(--relative-x-of-gp));
+    --relative-x-of-aig: calc(-1 * var(--relative-x-of-cks));
+    --relative-x-of-en:  calc(-1 * var(--relative-x-of-fo));
+    --relative-x-of-bjr:      0vw;                   /* b */
+    --relative-x-of-fo:  calc(1 * var(--15w-1xs)); /* b-< <==f */
+    --relative-x-of-cks: calc(2 * var(--15w-1xs)); /* b==> >-f-< <==c */
+    --relative-x-of-gp:  calc(3 * var(--15w-1xs)); /* b-< <==f==> >-c-< <==g */
+    --relative-x-of-l:   calc(4 * var(--15w-1xs)); /* j==> >-f-< <==k==> >-g-< <==l */
+    --15w-1xs: calc(1.5 * var(--hexagon-width) + var(--x-space));
+
+    --relative-y-of-abc:  calc(-1 * var(--relative-y-of-qrs));
+    --relative-y-of-defg: calc(-1 * var(--relative-y-of-mnop));
+    --relative-y-of-hijkl:     0vh;
+    --relative-y-of-mnop: calc(1 * var(--1h-1ys));
+    --relative-y-of-qrs:  calc(2 * var(--1h-1ys));
+    --1h-1ys: calc(var(--hexagon-height) + var(--y-space));
 }
 @media (prefers-color-scheme: light) {
     :root{
