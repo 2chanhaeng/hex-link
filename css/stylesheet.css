@@ -13,9 +13,9 @@ input[type="checkbox"]:checked + .center{
     --bg-color: var(--btn-checked-color);
 }
 .hexagon {
-    width: calc(10em / 1.55);
-    height: 10em;
-    border-radius: 1em;
+    width: var(--hexagon-width);
+    height: var(--hexagon-height);
+    border-radius: var(--hexagon-border-radius);
     transition: transform 400ms ease;
     background-color: var(--bg-color);
 }
@@ -40,15 +40,20 @@ input[type="checkbox"]:checked + .center{
 }
 .center {
     position: fixed;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
 }
+#a .center {
+    top: 50vh;
+    left: 50vw;
+}
 #b .center {
-    position: fixed;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
+    top: 50vh;
+    left: 30vw;
+}
+:root{
+    --hexagon-width: 10vh;
+    --hexagon-height: calc(var(--hexagon-width) * 1.55);
+    --hexagon-border-radius: calc(var(--hexagon-height) / 10);
 }
 @media (prefers-color-scheme: light) {
     :root{
