@@ -6,43 +6,11 @@ h1,h2,h3,p {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* #checkbox {
-    display: none;
-} */
-.btn span{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 10em;
-    background-color: var(--bg-color);
-}
-#checkbox + .center{
+input[type="checkbox"] + .center{
     --bg-color: var(--btn-color);
 }
-#checkbox:checked + .center{
+input[type="checkbox"]:checked + .center{
     --bg-color: var(--btn-checked-color);
-}
-span.middle{
-    width: 17.32em;
-    top: 50%;
-}
-span.top{
-    background-color: transparent;
-    width: 0;
-    height: 0;
-    border-bottom: 5em solid var(--bg-color);
-    border-left: 8.66em solid transparent;
-    border-right: 8.66em solid transparent;
-    top: calc(50% - 7.5em);
-}
-span.bottom{
-    background-color: transparent;
-    width: 0;
-    height: 0;
-    border-top: 5em solid var(--bg-color);
-    border-left: 8.66em solid transparent;
-    border-right: 8.66em solid transparent;
-    top: calc(50% + 7.5em);
 }
 .hexagon {
     width: calc(10em / 1.55);
@@ -51,9 +19,6 @@ span.bottom{
     transition: transform 400ms ease;
     background-color: var(--bg-color);
 }
-/* .hexagon:hover {
-    transform: rotate(30deg);
-} */
 .hexagon:before, .hexagon:after {
     content: "";
     display: block;
@@ -77,6 +42,12 @@ span.bottom{
     position: fixed;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+}
+#b .center {
+    position: fixed;
+    top: 50%;
+    left: 30%;
     transform: translate(-50%, -50%);
 }
 @media (prefers-color-scheme: light) {
