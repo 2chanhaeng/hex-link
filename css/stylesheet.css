@@ -1,10 +1,13 @@
 h1,h2,h3,p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    position: absolute;
-    top: 3rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 5em;
+    position: fixed;
+    margin: 0 0 0 0;
+    transform: translate(25%, -100%);
+}
+input[type="checkbox"]{
+    display: none;
 }
 input[type="checkbox"] + .center{
     --bg-color: var(--btn-color);
