@@ -49,6 +49,7 @@ function writeHexes(obj){
 function displayPipes(obj){
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
+        
         if(obj[id] & 1){
             hexCenter.querySelector('.z').style.display = 'block';
         }
@@ -70,5 +71,96 @@ function displayPipes(obj){
     }
 }
 
+function connectedWith(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
+    if(para & 63){
+        if(para & 1){
+            one;
+        }
+        if(para & 2){
+            two;
+        }
+        if(para & 4){
+            four;
+        }
+        if(para & 8){
+            eight;
+        }
+        if(para & 16){
+            sixteen;
+        }
+        if(para & 32){
+            thirtytwo;
+        }
+    }else{
+        notofthem;
+    }
+}
+
+let connectingCable = {
+    "a": {"b":1, "r":2, "q":4, "l":8, "d":16, "e":32},
+    "b": {"c":1, "s":2, "r":4, "a":8, "e":16, "f":32},
+    "c": {"m":1, "h":2, "s":4, "b":8, "f":16, "g":32},
+    "d": {"e":1, "a":2, "l":4, "p":8, "h":16, "i":32},
+    "e": {"f":1, "b":2, "a":4, "d":8, "i":16, "j":32},
+    "f": {"g":1, "c":2, "b":4, "e":8, "j":16, "k":32},
+    "g": {"q":1, "m":2, "c":4, "f":8, "k":16, "l":32},
+    "h": {"i":1, "d":2, "p":4, "s":8, "c":16, "m":32},
+    "i": {"j":1, "e":2, "d":4, "h":8, "m":16, "n":32},
+    "j": {"k":1, "f":2, "e":4, "i":8, "n":16, "o":32},
+    "k": {"l":1, "g":2, "f":4, "j":8, "o":16, "p":32},
+    "l": {"a":1, "q":2, "g":4, "k":8, "p":16, "d":32},
+    "m": {"n":1, "i":2, "h":4, "c":8, "g":16, "q":32},
+    "n": {"o":1, "j":2, "i":4, "m":8, "q":16, "r":32},
+    "o": {"p":1, "k":2, "j":4, "n":8, "r":16, "s":32},
+    "p": {"d":1, "l":2, "k":4, "o":8, "s":16, "h":32},
+    "q": {"r":1, "n":2, "m":4, "g":8, "l":16, "a":32},
+    "r": {"s":1, "o":2, "n":4, "q":8, "a":16, "b":32},
+    "s": {"h":1, "p":2, "o":4, "r":8, "b":16, "c":32},
+}
+
+// function(){
+//     let center = this.querySelector('.center');
+//     let p = center.querySelector('p');
+//     if(p){
+//         p.remove();
+//     }
+//     let newHex = getNew();
+//     hexes[id] = newHex;
+//     writeHexes(hexes);
+//     displayPipes(hexes);
+// }
+
+idList.forEach(id => {
+    let hex = document.querySelector(`#${id}`);
+    hex.addEventListener('mouseover', function(){
+        let center = this.querySelector('.center');
+        let hexagon = center.querySelector('.hexagon');
+        hexagon.style.backgroundColor = '#00ff00';
+        let connects = connectingCable[id];
+        console.log(connects);
+        for(const connected in connects){
+            console.log(connected);
+            let connectedHex = document.querySelector(`#${connected} .hexagon`);
+            connectedHex.style.backgroundColor = '#ff00ff';
+        }
+    }, false);
+    hex.addEventListener('mouseout', function(){
+        let center = this.querySelector('.center');
+        let hexagon = center.querySelector('.hexagon');
+        hexagon.style.backgroundColor = 'var(--btn-color)';
+        let connects = connectingCable[id];
+        console.log(connects);
+        for(const connected in connects){
+            console.log(connected);
+            let connectedHex = document.querySelector(`#${connected} .hexagon`);
+            connectedHex.style.backgroundColor = 'var(--btn-color)';
+        }
+    }, false);
+});
+
+
+// function isConnected(current, next){
+
+// }
 writeHexes(hexes)
 displayPipes(hexes)

@@ -41,7 +41,7 @@ input[type="checkbox"]:checked + .center .pipe{
     background-color: var(--btn-color);
 }
 input[type="checkbox"]{
-    /* display: none; */
+    display: none;
 }
 input[type="checkbox"] + .center{
     --bg-color: var(--btn-color);
