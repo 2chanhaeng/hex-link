@@ -2,9 +2,12 @@ h1,h2,h3,p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 3vh;
-    position: relative;
+    position: absolute;
     margin: 0 0 0 0;
     transform: inherit;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
 }
 .pipe {
     position: relative;
@@ -13,10 +16,11 @@ h1,h2,h3,p {
     width: var(--hexagon-width);
     top: calc(var(--hexagon-width)/5);/* calc((var(--hexagon-height) - var(--hexagon-diagonal))/2); */
     /* transform: rotate(120deg); */
-    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    clip-path: polygon(49% 0%, 100% 0%, 100% 100%, 49% 100%);
     background-color: var(--btn-checked-color);
     position: fixed;
     z-index: 1;
+    display: none;
 }
 .u {
     transform: rotate(60deg);
@@ -36,7 +40,7 @@ h1,h2,h3,p {
 input[type="checkbox"]:checked + .center .pipe{
     background-color: var(--btn-color);
 }
-    input[type="checkbox"]{
+input[type="checkbox"]{
     /* display: none; */
 }
 input[type="checkbox"] + .center{

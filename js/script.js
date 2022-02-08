@@ -37,10 +37,38 @@ function writeHexes(obj){
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
 
+        
+
         let p = document.createElement("p")
         p.textContent = obj[id];
 
         hexCenter.appendChild(p);
     }
 }
+
+function displayPipes(obj){
+    for (let id in obj){
+        let hexCenter = document.querySelector(`#${id} .center`)
+        if(obj[id] & 1){
+            hexCenter.querySelector('.z').style.display = 'block';
+        }
+        if(obj[id] & 2){
+            hexCenter.querySelector('.y').style.display = 'block';
+        }
+        if(obj[id] & 4){
+            hexCenter.querySelector('.x').style.display = 'block';
+        }
+        if(obj[id] & 8){
+            hexCenter.querySelector('.w').style.display = 'block';
+        }
+        if(obj[id] & 16){
+            hexCenter.querySelector('.v').style.display = 'block';
+        }
+        if(obj[id] & 32){
+            hexCenter.querySelector('.u').style.display = 'block';
+        }
+    }
+}
+
 writeHexes(hexes)
+displayPipes(hexes)
