@@ -1,13 +1,43 @@
 h1,h2,h3,p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
-    font-size: 5em;
-    position: fixed;
+    font-size: 3vh;
+    position: relative;
     margin: 0 0 0 0;
-    transform: translate(25%, -100%);
+    transform: inherit;
 }
-input[type="checkbox"]{
-    display: none;
+.pipe {
+    position: relative;
+    margin: 0 0 0 0;
+    height: calc(var(--hexagon-width)/5);/*var(--hexagon-diagonal);*/
+    width: var(--hexagon-width);
+    top: calc(var(--hexagon-width)/5);/* calc((var(--hexagon-height) - var(--hexagon-diagonal))/2); */
+    /* transform: rotate(120deg); */
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    background-color: var(--btn-checked-color);
+    position: fixed;
+    z-index: 1;
+}
+.u {
+    transform: rotate(60deg);
+}
+.v {
+    transform: rotate(120deg);
+}
+.w {
+    transform: rotate(180deg);
+}
+.x {
+    transform: rotate(240deg);
+}
+.y {
+    transform: rotate(300deg);
+}
+input[type="checkbox"]:checked + .center .pipe{
+    background-color: var(--btn-color);
+}
+    input[type="checkbox"]{
+    /* display: none; */
 }
 input[type="checkbox"] + .center{
     --bg-color: var(--btn-color);
@@ -96,9 +126,7 @@ input[type="checkbox"]:checked + .center{
     --hexagon-height: 10vh;
     --hexagon-width: calc(var(--hexagon-height) * 1.55);
     --hexagon-border-radius: calc(var(--hexagon-width) / 10);
-    --hexagon-diagonal: calc(var(--hexagon-height) * 1.728);
-    /* https://www.wolframalpha.com/input?i=%7B%7B%28x-0.845%29%5E2%2B%28y-1.395%29%5E2%3D0.155%5E2%7D%2C%7By%3Dsqrt%283%29*x%7D%7D
-    https://www.wolframalpha.com/input?i=abs%281%2F800+%28169+%2B+279+sqrt%283%29+%2B+sqrt%28-159680+%2B+94302+sqrt%283%29%29%29%2Bi%2F800+%28837+%2B+169+sqrt%283%29+%2B+sqrt%286+%28-79840+%2B+47151+sqrt%283%29%29%29%29%29 */
+    --hexagon-diagonal: calc(var(--hexagon-height) * 1.843);
     
     --x-center: 50vw;
     --y-center: 50vh;
