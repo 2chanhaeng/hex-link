@@ -49,54 +49,43 @@ function writeHexes(obj){
 function displayPipes(obj){
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
-        
-        if(obj[id] & 1){
-            hexCenter.querySelector('.z').style.display = 'block';
-        }
-        if(obj[id] & 2){
-            hexCenter.querySelector('.y').style.display = 'block';
-        }
-        if(obj[id] & 4){
-            hexCenter.querySelector('.x').style.display = 'block';
-        }
-        if(obj[id] & 8){
-            hexCenter.querySelector('.w').style.display = 'block';
-        }
-        if(obj[id] & 16){
-            hexCenter.querySelector('.v').style.display = 'block';
-        }
-        if(obj[id] & 32){
-            hexCenter.querySelector('.u').style.display = 'block';
-        }
+        caseby(obj[id],
+        function(){hexCenter.querySelector('.z').style.display = 'block';},
+        function(){hexCenter.querySelector('.y').style.display = 'block';},
+        function(){hexCenter.querySelector('.x').style.display = 'block';},
+        function(){hexCenter.querySelector('.w').style.display = 'block';},
+        function(){hexCenter.querySelector('.v').style.display = 'block';},
+        function(){hexCenter.querySelector('.u').style.display = 'block';},
+        null);
     }
 }
 
-function connectedWith(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
+function caseby(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
     if(para & 63){
         if(para & 1){
-            one;
+            one();
         }
         if(para & 2){
-            two;
+            two();
         }
         if(para & 4){
-            four;
+            four();
         }
         if(para & 8){
-            eight;
+            eight();
         }
         if(para & 16){
-            sixteen;
+            sixteen();
         }
         if(para & 32){
-            thirtytwo;
+            thirtytwo();
         }
     }else{
         notofthem;
     }
 }
 
-let connectingCable = {
+const connectingCable = {
     "a": {"b":1, "r":2, "q":4, "l":8, "d":16, "e":32},
     "b": {"c":1, "s":2, "r":4, "a":8, "e":16, "f":32},
     "c": {"m":1, "h":2, "s":4, "b":8, "f":16, "g":32},
@@ -116,6 +105,9 @@ let connectingCable = {
     "q": {"r":1, "n":2, "m":4, "g":8, "l":16, "a":32},
     "r": {"s":1, "o":2, "n":4, "q":8, "a":16, "b":32},
     "s": {"h":1, "p":2, "o":4, "r":8, "b":16, "c":32},
+}
+function isConnectable(id1, id2){
+    return connectingCable[id1][id2] ? true : false;
 }
 
 // function(){
@@ -137,9 +129,7 @@ idList.forEach(id => {
         let hexagon = center.querySelector('.hexagon');
         hexagon.style.backgroundColor = '#00ff00';
         let connects = connectingCable[id];
-        console.log(connects);
         for(const connected in connects){
-            console.log(connected);
             let connectedHex = document.querySelector(`#${connected} .hexagon`);
             connectedHex.style.backgroundColor = '#ff00ff';
         }
@@ -149,18 +139,20 @@ idList.forEach(id => {
         let hexagon = center.querySelector('.hexagon');
         hexagon.style.backgroundColor = 'var(--btn-color)';
         let connects = connectingCable[id];
-        console.log(connects);
         for(const connected in connects){
-            console.log(connected);
             let connectedHex = document.querySelector(`#${connected} .hexagon`);
             connectedHex.style.backgroundColor = 'var(--btn-color)';
         }
     }, false);
 });
 
-
-// function isConnected(current, next){
-
-// }
+function isConnected(current, next){
+    if(isConnectable(current, next)){
+        let currToNext = connectingCable[current][next];
+        let nextToCurr = connectingCable[next][current];
+        return (hexes[current] & currToNext && hexes[next] & nextToCurr) > 0;
+    }
+    return false;
+}
 writeHexes(hexes)
 displayPipes(hexes)
