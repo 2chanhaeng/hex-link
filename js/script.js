@@ -107,7 +107,7 @@ const connectingCable = {
     "s": {"h":1, "p":2, "o":4, "r":8, "b":16, "c":32},
 }
 function isConnectable(id1, id2){
-    return connectingCable[id1][id2] ? true : false;
+    return ((id1 in connectingCable && id2 in connectingCable)?connectingCable[id1][id2]:false) ? true : false;
 }
 
 // function(){
@@ -154,5 +154,40 @@ function isConnected(current, next){
     }
     return false;
 }
+
+function chainConnceted(current, next){
+    return isConnected(current, next) && next
+}
+
+function isRinged(list){
+    if(list.length > 2){
+        if(isConnected(list[0], list[list.length -1])){
+            return list.reduce(chainConnceted) ? true : false;
+        }
+        return false;
+    }
+    return false;
+}
+
+
+
+// 체크된 순서대로 체크박스의 조상 div의 아이디를 배열에 저장
+function getChecked(event){
+}
+
+function addToList(id, list = []){
+    list.push(id);
+    return list;
+}
+
+
+// 모든 체크박스의 체크 상태를 취소합니다.
+function cancelAllCheckedCheckbox(){
+    idList.forEach(id => {
+        let hex = document.querySelector(`#${id}`);
+        hex.querySelector('input[type="checkbox"]').checked = false;
+    });
+}
+
 writeHexes(hexes)
 displayPipes(hexes)
