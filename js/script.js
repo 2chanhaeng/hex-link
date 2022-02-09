@@ -98,18 +98,6 @@ function isConnectable(id1, id2){
     return ((id1 in connectingCable && id2 in connectingCable)?connectingCable[id1][id2]:false) ? true : false;
 }
 
-// function(){
-//     let center = this.querySelector('.center');
-//     let p = center.querySelector('p');
-//     if(p){
-//         p.remove();
-//     }
-//     let newHex = getNew();
-//     hexes[id] = newHex;
-//     writeHexes(hexes);
-//     displayPipes(hexes);
-// }
-
 idList.forEach(id => {
     let hex = document.querySelector(`#${id}`);
     hex.addEventListener('mouseover', function(){
@@ -208,9 +196,17 @@ function cancelAllCheckedCheckbox(){
     checkedHexes.length = 0;
 }
 
-function mixHexes(list){
+function mixHexes(list = hexes){
     cancelAllCheckedCheckbox();
     writeHexes(list);
     displayPipes(list);
 }
 mixHexes(hexes);
+scoreUp([]);
+
+function mixAllHex(){
+    cancelAllCheckedCheckbox();
+    hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
+    writeHexes(hexes);
+    displayPipes(hexes);
+}
