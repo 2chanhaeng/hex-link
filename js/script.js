@@ -51,14 +51,7 @@ function displayPipes(obj){
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
         hexCenter.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
-        caseby(obj[id],
-        function(){hexCenter.querySelector('.z').style.display = 'block';},
-        function(){hexCenter.querySelector('.y').style.display = 'block';},
-        function(){hexCenter.querySelector('.x').style.display = 'block';},
-        function(){hexCenter.querySelector('.w').style.display = 'block';},
-        function(){hexCenter.querySelector('.v').style.display = 'block';},
-        function(){hexCenter.querySelector('.u').style.display = 'block';},
-        null);
+        paraByCase(obj[id],function(a){hexCenter.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
     }
 }
 
@@ -73,6 +66,10 @@ function caseby(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
     }else{
         notofthem;
     }
+}
+
+function paraByCase(para, callback, one, two, four, eight, sixteen, thirtytwo, notofthem){
+    caseby(para, function(){callback(one);}, function(){callback(two);}, function(){callback(four);}, function(){callback(eight);}, function(){callback(sixteen);}, function(){callback(thirtytwo);}, notofthem);
 }
 
 const connectingCable = {
