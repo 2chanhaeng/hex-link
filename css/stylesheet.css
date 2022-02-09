@@ -14,11 +14,11 @@ h1,h2,h3,p {
     margin: 0 0 0 0;
     height: calc(var(--hexagon-width)/5);/*var(--hexagon-diagonal);*/
     width: var(--hexagon-width);
-    top: calc(var(--hexagon-width)/5);/* calc((var(--hexagon-height) - var(--hexagon-diagonal))/2); */
+    top: calc((var(--hexagon-height) - var(--hexagon-width)/5)/2);
     /* transform: rotate(120deg); */
     clip-path: polygon(49% 0%, 100% 0%, 100% 100%, 49% 100%);
     background-color: var(--btn-checked-color);
-    position: fixed;
+    position: absolute;
     z-index: 1;
     display: none;
 }
