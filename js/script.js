@@ -137,11 +137,12 @@ idList.forEach(id => {
     hex.addEventListener('mouseout', function(){
         let center = this.querySelector('.center');
         let hexagon = center.querySelector('.hexagon');
-        hexagon.style.backgroundColor = 'var(--btn-color)';
+        hexagon.style.backgroundColor = "";
+        
         let connects = connectingCable[id];
         for(const connected in connects){
             let connectedHex = document.querySelector(`#${connected} .hexagon`);
-            connectedHex.style.backgroundColor = 'var(--btn-color)';
+            connectedHex.style.backgroundColor = "";
         }
     }, false);
 });
