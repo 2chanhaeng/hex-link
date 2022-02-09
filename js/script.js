@@ -147,6 +147,40 @@ idList.forEach(id => {
             connectedHex.style.backgroundColor = "";
         }
     }, false);
+    let checkbox = hex.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener('click', function(e){
+        // 이미 체크되어 있던 체크박스는 체크 취소
+        if(checkedHexes.includes(id)){
+            // 첫 요소 혹은 마지막 요소일 경우에만 체크 취소 가능
+                if(checkedHexes.indexOf(id) == 0){
+                checkedHexes.splice(0);
+            }else if(checkedHexes.indexOf(id) == checkedHexes.length - 1){
+                checkedHexes.splice(checkedHexes.length - 1);
+            }else{
+                // 첫 원소도, 마지막 원소도 아니면 checkbox의 checked 상태 유지
+                checkbox.checked = true;
+            }
+        }else{
+            if(checkedHexes.length == 0){
+                checkedHexes.push(id);
+            }else if(isConnected(checkedHexes[checkedHexes.length - 1], id)){
+            // 체크되지 않은 체크박스는 첫 요소 혹은 마지막 요소와 연결되어 있을 경우에만 체크 가능
+                checkedHexes.push(id);
+            }else if(isConnected(checkedHexes[0], id)){
+                checkedHexes.unshift(id);
+            }else{
+                checkbox.checked = false;
+            }
+            if(isRinged(checkedHexes)){
+                console.log(checkedHexes);
+                checkedHexes.forEach(function(id){
+                    hexes[id] = getNew();
+                });
+                mixHexes(hexes);
+            };
+        }
+        console.log(checkedHexes);
+    }, false);
 });
 
 function isConnected(current, next){
@@ -170,17 +204,6 @@ function isRinged(list){
         return false;
     }
     return false;
-}
-
-
-
-// 체크된 순서대로 체크박스의 조상 div의 아이디를 배열에 저장
-function getChecked(event){
-}
-
-function addToList(id, list = []){
-    list.push(id);
-    return list;
 }
 
 let checkedHexes = [];
