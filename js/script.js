@@ -183,6 +183,7 @@ function addToList(id, list = []){
     return list;
 }
 
+let checkedHexes = [];
 
 // 모든 체크박스의 체크 상태를 취소합니다.
 function cancelAllCheckedCheckbox(){
@@ -190,6 +191,7 @@ function cancelAllCheckedCheckbox(){
         let hex = document.querySelector(`#${id}`);
         hex.querySelector('input[type="checkbox"]').checked = false;
     });
+    checkedHexes.length = 0;
 }
 
 function mixHexes(list){
