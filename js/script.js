@@ -41,6 +41,7 @@ const connectingCable = {
 
 let hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
 let checkedHexes = [];
+let score = 0;
 
 // 입력된 리스트에 포함된 수를 인덱스로 가지는 hexes의 요소에 getNew()를 적용하여 새로운 값을 대입
 function changeHex(list, obj){
@@ -161,6 +162,7 @@ idList.forEach(id => {
                 checkedHexes.forEach(function(id){
                     hexes[id] = getNew();
                 });
+                scoreUp(checkedHexes);
                 mixHexes(hexes);
             };
         }
@@ -189,6 +191,12 @@ function isRinged(list){
         return false;
     }
     return false;
+}
+
+function scoreUp(list){
+    score += list.length ** 2;
+    let scoreElement = document.querySelector('#score');
+    scoreElement.innerHTML = score;
 }
 
 // 모든 체크박스의 체크 상태를 취소합니다.
