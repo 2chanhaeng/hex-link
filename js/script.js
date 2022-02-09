@@ -64,24 +64,12 @@ function displayPipes(obj){
 
 function caseby(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
     if(para & 63){
-        if(para & 1){
-            one();
-        }
-        if(para & 2){
-            two();
-        }
-        if(para & 4){
-            four();
-        }
-        if(para & 8){
-            eight();
-        }
-        if(para & 16){
-            sixteen();
-        }
-        if(para & 32){
-            thirtytwo();
-        }
+        if(para & 1){one();}
+        if(para & 2){two();}
+        if(para & 4){four();}
+        if(para & 8){eight();}
+        if(para & 16){sixteen();}
+        if(para & 32){thirtytwo();}
     }else{
         notofthem;
     }
