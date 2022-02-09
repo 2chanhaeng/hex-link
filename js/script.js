@@ -36,9 +36,10 @@ function writeHexes(obj){
     // 오브젝트에서 key를 뽑아 해당 key를 id로 가지는 요소의 center 클래스에 p 요소에 값을 대입해서 기존 내용에 추가
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
-
-        
-
+        // 만약 이미 p 태그가 있다면 삭제
+        if(hexCenter.querySelector('p')){
+            hexCenter.querySelector('p').remove();
+        }
         let p = document.createElement("p")
         p.textContent = obj[id];
 
@@ -49,6 +50,7 @@ function writeHexes(obj){
 function displayPipes(obj){
     for (let id in obj){
         let hexCenter = document.querySelector(`#${id} .center`)
+        hexCenter.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
         caseby(obj[id],
         function(){hexCenter.querySelector('.z').style.display = 'block';},
         function(){hexCenter.querySelector('.y').style.display = 'block';},
@@ -190,5 +192,9 @@ function cancelAllCheckedCheckbox(){
     });
 }
 
-writeHexes(hexes)
-displayPipes(hexes)
+function mixHexes(list){
+    cancelAllCheckedCheckbox();
+    writeHexes(list);
+    displayPipes(list);
+}
+mixHexes(hexes);
