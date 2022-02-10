@@ -218,3 +218,18 @@ function mixAllHex(){
     writeHexes(hexes);
     displayPipes(hexes);
 }
+function makeConnectingTable(obj = connectingCable){
+    let result = {};
+    for(const id in obj){
+        result[id] = [];
+        let connects = obj[id];
+        for(const connected in connects){
+            if(isConnected(id, connected)){
+                result[id].push(connected);
+            }
+        };
+    };
+    return result;
+}
+
+let connectingTable = makeConnectingTable(connectingCable);
