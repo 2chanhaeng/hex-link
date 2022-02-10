@@ -154,7 +154,7 @@ idList.forEach(id => {
                 checkbox.checked = false;
             }
             if(isRinged(checkedHexes)){
-                console.log(checkedHexes);
+                if(isDebug){console.log(checkedHexes);}
                 checkedHexes.forEach(function(id){
                     hexes[id] = getNew();
                 });
@@ -162,7 +162,7 @@ idList.forEach(id => {
                 mixAllHex();
             };
         }
-        console.log(checkedHexes);
+        if(isDebug){console.log(checkedHexes);}
     }, false);
 });
 
@@ -223,7 +223,6 @@ function mixAllHex(){
         if(isCycled()){break;}
     }
     writeHexes(hexes);
-    console.log(1);
     displayPipes(hexes);
 }
 
@@ -261,7 +260,7 @@ function isCycled(obj = connectingTable){
     }
     length = 0;
     for(const id in obj){length += obj[id].length};
-    console.log(obj);
+    if(isDebug){console.log(obj);}
     return length > 2;
 }
 
