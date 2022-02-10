@@ -159,7 +159,11 @@ idList.forEach(id => {
                     hexes[id] = getNew();
                 });
                 scoreUp(checkedHexes);
-                mixAllHex();
+                if(isCycled()){
+                    mixHexes();
+                }else{
+                    mixAllHex();
+                }
             };
         }
         if(isDebug){console.log(checkedHexes);}
@@ -206,11 +210,6 @@ function cancelAllCheckedCheckbox(){
 
 function mixHexes(list = hexes){
     cancelAllCheckedCheckbox();
-    for(let i = 0; i < 100; i++){
-        hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
-        connectingTable = makeConnectingTable(connectingCable);
-        if(isCycled()){break;}
-    }
     writeHexes(list);
     displayPipes(list);
 }
