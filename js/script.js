@@ -134,9 +134,9 @@ idList.forEach(id => {
         if(checkedHexes.includes(id)){
             // 첫 요소 혹은 마지막 요소일 경우에만 체크 취소 가능
                 if(checkedHexes.indexOf(id) == 0){
-                checkedHexes.splice(0);
+                checkedHexes.shift();
             }else if(checkedHexes.indexOf(id) == checkedHexes.length - 1){
-                checkedHexes.splice(checkedHexes.length - 1);
+                checkedHexes.pop();
             }else{
                 // 첫 원소도, 마지막 원소도 아니면 checkbox의 checked 상태 유지
                 checkbox.checked = true;
@@ -158,7 +158,7 @@ idList.forEach(id => {
                     hexes[id] = getNew();
                 });
                 scoreUp(checkedHexes);
-                mixHexes(hexes);
+                mixAllHex();
             };
         }
         console.log(checkedHexes);
@@ -205,20 +205,25 @@ function cancelAllCheckedCheckbox(){
 
 function mixHexes(list = hexes){
     cancelAllCheckedCheckbox();
+    for(let i = 0; i < 100; i++){
+        hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
+        connectingTable = makeConnectingTable(connectingCable);
+        if(isCycled()){break;}
+    }
     writeHexes(list);
     displayPipes(list);
 }
 
 function mixAllHex(){
-    let isNotCycled = true;
-    while(isNotCycled){
-        cancelAllCheckedCheckbox();
+    cancelAllCheckedCheckbox();
+    for(let i = 0; i < 100; i++){
         hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
-        writeHexes(hexes);
-        displayPipes(hexes);
         connectingTable = makeConnectingTable(connectingCable);
-        isNotCycled = !isCycled();
+        if(isCycled()){break;}
     }
+    writeHexes(hexes);
+    console.log(1);
+    displayPipes(hexes);
 }
 
 function makeConnectingTable(obj = connectingCable){
