@@ -2,7 +2,6 @@
 
 const url = new URL(window.location.href);
 const isDebug = url.searchParams.get('debug') == 'true';
-console.log(isDebug);
 // 3~63이 랜덤으로 나오는 함수
 function rand64(){
     return Math.floor(Math.random() * 61) + 3;
@@ -213,11 +212,17 @@ mixHexes(hexes);
 scoreUp([]);
 
 function mixAllHex(){
-    cancelAllCheckedCheckbox();
-    hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
-    writeHexes(hexes);
-    displayPipes(hexes);
+    let isNotCycled = true;
+    while(isNotCycled){
+        cancelAllCheckedCheckbox();
+        hexes = idList.reduce((acc,curr) => (acc[curr] = getNew(), acc), {});
+        writeHexes(hexes);
+        displayPipes(hexes);
+        connectingTable = makeConnectingTable(connectingCable);
+        isNotCycled = !isCycled();
+    }
 }
+
 function makeConnectingTable(obj = connectingCable){
     let result = {};
     for(const id in obj){
@@ -233,3 +238,25 @@ function makeConnectingTable(obj = connectingCable){
 }
 
 let connectingTable = makeConnectingTable(connectingCable);
+
+function isCycled(obj = connectingTable){
+    let ersead = 1;
+    while(ersead != 0){
+        ersead = 0;
+        for(const id in obj){
+            if(obj[id].length <= 1){
+                ersead += 1;
+                for(const id2 in obj){
+                    if(obj[id2].includes(id)){
+                        obj[id2].splice(obj[id2].indexOf(id), 1);
+                    }
+                }
+                delete obj[id];
+            }
+        }
+    }
+    length = 0;
+    for(const id in obj){length += obj[id].length};
+    console.log(obj);
+    return length > 2;
+}
