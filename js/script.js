@@ -208,8 +208,6 @@ function mixHexes(list = hexes){
     writeHexes(list);
     displayPipes(list);
 }
-mixHexes(hexes);
-scoreUp([]);
 
 function mixAllHex(){
     let isNotCycled = true;
@@ -260,3 +258,9 @@ function isCycled(obj = connectingTable){
     console.log(obj);
     return length > 2;
 }
+
+function start(){
+    mixAllHex();
+    scoreUp([]);
+}
+start()
