@@ -7,10 +7,11 @@ function rand64(){
     return Math.floor(Math.random() * 61) + 3;
 }
 
+const banned = new Set([0, 4, 8, 16, 32,/*1*/ 3, 5, 9, 17, 33,/*2*/ 6, 10, 18, 34,/*4*/ 12, 20, 36,/*8*/ 24, 40,/*16*/ 48]);
 // 0, 4, 8, 16, 32 가 아닌 수가 나올 때까지 반복
 function getNew(){
     let result = 0
-    while(result == 0 || result == 4 || result == 8 || result == 16 || result == 32){
+    while(banned.has(result)){
         result = rand64();
     }
     return result;
