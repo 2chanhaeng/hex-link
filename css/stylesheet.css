@@ -124,48 +124,48 @@ input[type="checkbox"]:checked + .center{
 
 /* top */
 #a .center, #b .center, #c .center{
-    top:  calc(var(--y-center) + var(--relative-y-of-abc));
+    top:  calc(var(--y-center) + var(--relative-y02));
 }
 #d .center, #e .center, #f .center, #g .center{
-    top:  calc(var(--y-center) + var(--relative-y-of-defg));
+    top:  calc(var(--y-center) + var(--relative-y01));
 }
 #h .center, #i .center, #j .center, #k .center, #l .center{
-    top:  calc(var(--y-center) + var(--relative-y-of-hijkl));
+    top:  calc(var(--y-center) + var(--relative-y0));
 }
 #m .center, #n .center, #o .center, #p .center{
-    top:  calc(var(--y-center) + var(--relative-y-of-mnop));
+    top:  calc(var(--y-center) + var(--relative-y1));
 }
 #q .center, #r .center, #s .center{
-    top:  calc(var(--y-center) + var(--relative-y-of-qrs));
+    top:  calc(var(--y-center) + var(--relative-y2));
 }
 
 /* left */
 #h .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-h));
+    left:  calc(var(--x-center) + var(--relative-x04));
 }
 #d .center, #m .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-dm));
+    left:  calc(var(--x-center) + var(--relative-x03));
 }
 #a .center, #i .center, #q .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-aiq));
+    left:  calc(var(--x-center) + var(--relative-x02));
 }
 #e .center, #n .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-en));
+    left:  calc(var(--x-center) + var(--relative-x01));
 }
 #b .center, #j .center, #r .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-bjr));
+    left:  calc(var(--x-center) + var(--relative-x0));
 }
 #f .center, #o .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-fo));
+    left:  calc(var(--x-center) + var(--relative-x1));
 }
 #c .center, #k .center, #s .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-cks));
+    left:  calc(var(--x-center) + var(--relative-x2));
 }
 #g .center, #p .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-gp));
+    left:  calc(var(--x-center) + var(--relative-x3));
 }
 #l .center{
-    left:  calc(var(--x-center) + var(--relative-x-of-l));
+    left:  calc(var(--x-center) + var(--relative-x4));
 }
 
 :root{
@@ -179,22 +179,27 @@ input[type="checkbox"]:checked + .center{
     --x-space: calc(var(--hexagon-width) / 20);
     --y-space: calc(2 / 1.73 * var(--x-space));
 
-    --relative-x-of-h:   calc(-1 * var(--relative-x-of-l));
-    --relative-x-of-dm:  calc(-1 * var(--relative-x-of-gp));
-    --relative-x-of-aiq: calc(-1 * var(--relative-x-of-cks));
-    --relative-x-of-en:  calc(-1 * var(--relative-x-of-fo));
-    --relative-x-of-bjr:      0vw;                 /* b */
-    --relative-x-of-fo:  calc(1 * var(--15w-1xs)); /* b-< <==f */
-    --relative-x-of-cks: calc(2 * var(--15w-1xs)); /* b==> >-f-< <==c */
-    --relative-x-of-gp:  calc(3 * var(--15w-1xs)); /* b-< <==f==> >-c-< <==g */
-    --relative-x-of-l:   calc(4 * var(--15w-1xs)); /* j==> >-f-< <==k==> >-g-< <==l */
+    --relative-x05: calc(-1 * var(--relative-x5));
+    --relative-x04: calc(-1 * var(--relative-x4));
+    --relative-x03: calc(-1 * var(--relative-x3));
+    --relative-x02: calc(-1 * var(--relative-x2));
+    --relative-x01: calc(-1 * var(--relative-x1));
+    --relative-x0:       0vw;                 /* b */
+    --relative-x1:  calc(1 * var(--15w-1xs)); /* b-< <==f */
+    --relative-x2:  calc(2 * var(--15w-1xs)); /* b==> >-f-< <==c */
+    --relative-x3:  calc(3 * var(--15w-1xs)); /* b-< <==f==> >-c-< <==g */
+    --relative-x4:  calc(4 * var(--15w-1xs)); /* j==> >-f-< <==k==> >-g-< <==l */
+    --relative-x5:  calc(5 * var(--15w-1xs));
+    
     --15w-1xs: calc(0.5 * var(--hexagon-width) + var(--x-space));
 
-    --relative-y-of-abc:  calc(-1 * var(--relative-y-of-qrs));
-    --relative-y-of-defg: calc(-1 * var(--relative-y-of-mnop));
-    --relative-y-of-hijkl:     0vh;
-    --relative-y-of-mnop: calc(1 * var(--15h));
-    --relative-y-of-qrs:  calc(2 * var(--15h));
+    --relative-y03:  calc(-1 * var(--relative-y3));
+    --relative-y02:  calc(-1 * var(--relative-y2));
+    --relative-y01: calc(-1 * var(--relative-y1));
+    --relative-y0:     0vh;
+    --relative-y1: calc(1 * var(--15h));
+    --relative-y2:  calc(2 * var(--15h));
+    --relative-y3:  calc(3 * var(--15h));
     --15h: calc(1.5 * var(--hexagon-height));
 
     --controls-side-margin: calc(var(--hexagon-width) / 2);
