@@ -36,7 +36,28 @@ idList.forEach(id => {
     center.setAttribute('for', `${id}-checkbox`);
     center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
     cell.appendChild(center);
-    
+
+    view.appendChild(cell);
+});
+
+const boundaryList = ["a", "b", "c", "d", "g", "h", "l", "m", "p", "q", "r", "s"];
+boundaryList.forEach(id => {
+    const cell = document.createElement('div');
+    cell.classList.add('pseudo');
+    cell.classList.add('cell');
+    cell.id = `pseudo-${id}`;
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `pseudo-${id}-checkbox`;
+    cell.appendChild(checkbox);
+
+    const center = document.createElement('label');
+    center.classList.add('center');
+    center.setAttribute('for', `pseudo-${id}-checkbox`);
+    center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
+    cell.appendChild(center);
+
     view.appendChild(cell);
 });
 
