@@ -1,11 +1,13 @@
 
 #controls > * {
     position: absolute;
+    right: var(--controls-side-margin);
     /* display: inline-block; */
 }
-
+#view{
+    position: absolute;
+}
 #score, #mixAllHex + label, #cancelAllCheckedCheckbox + label{
-    right: var(--controls-side-margin);
 }
 
 #score{

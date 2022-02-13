@@ -20,6 +20,26 @@ function getNew(){
 const lenHexes = 19;
 const idList = [...Array(lenHexes).keys()].map(i => String.fromCharCode(i + 97));
 
+const view = document.querySelector('#view');
+idList.forEach(id => {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.id = id;
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `${id}-checkbox`;
+    cell.appendChild(checkbox);
+
+    const center = document.createElement('label');
+    center.classList.add('center');
+    center.setAttribute('for', `${id}-checkbox`);
+    center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
+    cell.appendChild(center);
+    
+    view.appendChild(cell);
+});
+
 const connectingCable = {
     "a": {"b":1, "r":2, "q":4, "l":8, "d":16, "e":32},
     "b": {"c":1, "s":2, "r":4, "a":8, "e":16, "f":32},
