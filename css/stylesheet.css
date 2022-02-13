@@ -122,54 +122,76 @@ input[type="checkbox"]:checked + .center{
     transform: translate(-50%, -50%);
 }
 
+.pseudo{
+    opacity: 50%;
+}
+
 /* top */
-#a .center, #b .center, #c .center{
+#pseudo-q0 .center, #pseudo-r .center, #pseudo-s1 .center, #pseudo-h0 .center{
+    top:  calc(var(--y-center) + var(--relative-y03));
+}
+#a .center, #b .center, #c .center, #pseudo-l1 .center, #pseudo-m .center{
     top:  calc(var(--y-center) + var(--relative-y02));
 }
-#d .center, #e .center, #f .center, #g .center{
+#d .center, #e .center, #f .center, #g .center, #pseudo-p .center, #pseudo-q1 .center{
     top:  calc(var(--y-center) + var(--relative-y01));
 }
-#h .center, #i .center, #j .center, #k .center, #l .center{
+#h .center, #i .center, #j .center, #k .center, #l .center, #pseudo-s0 .center, #pseudo-a0 .center{
     top:  calc(var(--y-center) + var(--relative-y0));
 }
-#m .center, #n .center, #o .center, #p .center{
+#m .center, #n .center, #o .center, #p .center, #pseudo-c1 .center, #pseudo-d .center{
     top:  calc(var(--y-center) + var(--relative-y1));
 }
-#q .center, #r .center, #s .center{
+#q .center, #r .center, #s .center, #pseudo-g .center, #pseudo-h1 .center{
     top:  calc(var(--y-center) + var(--relative-y2));
+}
+#pseudo-l0 .center, #pseudo-a1 .center, #pseudo-b .center, #pseudo-c0 .center{
+    top:  calc(var(--y-center) + var(--relative-y3));
 }
 
 /* left */
-#h .center{
+#pseudo-s0 .center{
+    left:  calc(var(--x-center) + var(--relative-x06));
+}
+#pseudo-p .center, #pseudo-c1 .center{
+    left:  calc(var(--x-center) + var(--relative-x05));
+}
+#h .center, #pseudo-l1 .center, #pseudo-g .center{
     left:  calc(var(--x-center) + var(--relative-x04));
 }
-#d .center, #m .center{
+#d .center, #m .center, #pseudo-q0 .center, #pseudo-l0 .center{
     left:  calc(var(--x-center) + var(--relative-x03));
 }
 #a .center, #i .center, #q .center{
     left:  calc(var(--x-center) + var(--relative-x02));
 }
-#e .center, #n .center{
+#e .center, #n .center, #pseudo-r .center, #pseudo-a1 .center{
     left:  calc(var(--x-center) + var(--relative-x01));
 }
 #b .center, #j .center, #r .center{
     left:  calc(var(--x-center) + var(--relative-x0));
 }
-#f .center, #o .center{
+#f .center, #o .center, #pseudo-s1 .center, #pseudo-b .center{
     left:  calc(var(--x-center) + var(--relative-x1));
 }
 #c .center, #k .center, #s .center{
     left:  calc(var(--x-center) + var(--relative-x2));
 }
-#g .center, #p .center{
+#g .center, #p .center, #pseudo-h0 .center, #pseudo-c0 .center{
     left:  calc(var(--x-center) + var(--relative-x3));
 }
-#l .center{
+#l .center, #pseudo-m .center, #pseudo-h1 .center{
     left:  calc(var(--x-center) + var(--relative-x4));
+}
+#pseudo-q1 .center, #pseudo-d .center{
+    left:  calc(var(--x-center) + var(--relative-x5));
+}
+#pseudo-a0 .center{
+    left:  calc(var(--x-center) + var(--relative-x6));
 }
 
 :root{
-    --hexagon-height: min(10vh,10vw);
+    --hexagon-height: min(9vh,8vw);
     --hexagon-width: calc(var(--hexagon-height) * 1.55);
     --hexagon-border-radius: calc(var(--hexagon-width) / 10);
     --hexagon-diagonal: calc(var(--hexagon-height) * 1.843);
@@ -179,6 +201,7 @@ input[type="checkbox"]:checked + .center{
     --x-space: calc(var(--hexagon-width) / 20);
     --y-space: calc(2 / 1.73 * var(--x-space));
 
+    --relative-x06: calc(-1 * var(--relative-x6));
     --relative-x05: calc(-1 * var(--relative-x5));
     --relative-x04: calc(-1 * var(--relative-x4));
     --relative-x03: calc(-1 * var(--relative-x3));
@@ -190,6 +213,7 @@ input[type="checkbox"]:checked + .center{
     --relative-x3:  calc(3 * var(--15w-1xs)); /* b-< <==f==> >-c-< <==g */
     --relative-x4:  calc(4 * var(--15w-1xs)); /* j==> >-f-< <==k==> >-g-< <==l */
     --relative-x5:  calc(5 * var(--15w-1xs));
+    --relative-x6:  calc(6 * var(--15w-1xs));
     
     --15w-1xs: calc(0.5 * var(--hexagon-width) + var(--x-space));
 
