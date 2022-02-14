@@ -71,11 +71,6 @@ vertexList.forEach(id => {
     }
 });
 
-function forBoundaryCell(id, callback){
-    callback(id);
-    if(sideList.includes(id)){callback(`pesudo-${id}`);}
-    else if(vertexList.includes(id)){for(let i = 0; i < 2; i++){callback(`pesudo-${id}${i}`);}}
-}
 
 const connectingCable = {
     "a": {"b":1, "r":2, "q":4, "l":8, "d":16, "e":32},
@@ -136,7 +131,6 @@ function displayAllCellPipe(obj){
 }
 
 function displayPipes(id, value){
-    console.log(document.querySelector(`#${id} .center`).childNodes);
     document.querySelector(`#${id} .center`).childNodes.forEach(hexagon => {
         hexagon.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
         paraByCase(value,function(a){hexagon.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
