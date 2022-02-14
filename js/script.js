@@ -40,42 +40,35 @@ idList.forEach(id => {
     view.appendChild(cell);
 });
 
+const sideList = ["b", "d", "g", "m", "p", "r"];
+sideList.forEach(id => {
+    const cell = document.querySelector(`#${id}`);
+    const origin = cell.querySelector(".origin");
+    const pseudo = origin.cloneNode(true);
+
+    pseudo.classList.add(`pseudo`);
+    pseudo.classList.remove(`origin`);
+
+    cell.querySelector(".center").appendChild(pseudo);
+});
+
 const vertexList = ["a", "c", "h", "l", "q", "s"];
 vertexList.forEach(id => {
     for(let i = 0; i < 2; i++){
         const cell = document.querySelector(`#${id}`);
         const origin = cell.querySelector(".origin");
         const pseudo = origin.cloneNode(true);
+
         pseudo.classList.add(`pseudo`);
+        pseudo.classList.remove(`origin`);
         if(i){
             pseudo.classList.add(`anticlockwise`);
         }else{
             pseudo.classList.add(`clockwise`);
         }
-        pseudo.classList.remove(`origin`);
+        
         cell.querySelector(".center").appendChild(pseudo);
     }
-});
-
-const sideList = ["b", "d", "g", "m", "p", "r"];
-sideList.forEach(id => {
-    const cell = document.createElement('div');
-    cell.classList.add('pseudo');
-    cell.classList.add('cell');
-    cell.id = `pseudo-${id}`;
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = `pseudo-${id}-checkbox`;
-    cell.appendChild(checkbox);
-
-    const center = document.createElement('label');
-    center.classList.add('center');
-    center.setAttribute('for', `pseudo-${id}-checkbox`);
-    center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
-    cell.appendChild(center);
-
-    view.appendChild(cell);
 });
 
 function forBoundaryCell(id, callback){
@@ -123,29 +116,31 @@ function writeHexes(obj){
 
         // 오브젝트에서 key를 뽑아 해당 key를 id로 가지는 요소의 center 클래스에 p 요소에 값을 대입해서 기존 내용에 추가
         for (let id in obj){
-            let hexCenter = document.querySelector(`#${id} .center`)
+            let hexCenter = document.querySelector(`#${id} .center`);
             // 만약 이미 p 태그가 있다면 삭제
             if(hexCenter.querySelector('p')){
-                hexCenter.querySelector('p').remove();
+                hexCenter.querySelectorAll('p').forEach(p => p.remove());
             }
             let p = document.createElement("p")
             p.textContent = obj[id];
     
-            hexCenter.appendChild(p);
+            hexCenter.childNodes.forEach(child => child.appendChild(p.cloneNode(true)));
         }
     }   
 }
 
 function displayAllCellPipe(obj){
     for (const id in obj){
-        forBoundaryCell(id, displayPipes)
+        displayPipes(id, obj[id])
     }
 }
 
-function displayPipes(id){
-    let hexCenter = document.querySelector(`#${id} .center`)
-    hexCenter.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
-    paraByCase(obj[id],function(a){hexCenter.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
+function displayPipes(id, value){
+    console.log(document.querySelector(`#${id} .center`).childNodes);
+    document.querySelector(`#${id} .center`).childNodes.forEach(hexagon => {
+        hexagon.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
+        paraByCase(value,function(a){hexagon.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
+    });
 }
 
 function caseby(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
@@ -173,27 +168,35 @@ idList.forEach(id => {
     let hex = document.querySelector(`#${id}`);
     hex.addEventListener('mouseover', function(){
         let center = this.querySelector('.center');
-        let hexagon = center.querySelector('.hexagon');
-        hexagon.style.backgroundColor = '#00ff00';
-        if(isDebug){
-            let connects = connectingCable[id];
-            for(const connected in connects){
-                let connectedHex = document.querySelector(`#${connected} .hexagon`);
-                connectedHex.style.backgroundColor = '#ff00ff';
+        let hexagons = center.querySelectorAll('.hexagon');
+        hexagons.forEach(hexagon => {
+            hexagon.style.backgroundColor = '#00ff00';
+            if(isDebug){
+                let connects = connectingCable[id];
+                for(const connected in connects){
+                    let connectedHexs = document.querySelectorAll(`#${connected} .hexagon`);
+                    connectedHexs.forEach(connectedHex => {
+                        connectedHex.style.backgroundColor = '#ff00ff';
+                    });
+                }
             }
-        }
+        });
     }, false);
     hex.addEventListener('mouseout', function(){
         let center = this.querySelector('.center');
-        let hexagon = center.querySelector('.hexagon');
-        hexagon.style.backgroundColor = "";
-        if(isDebug){
-            let connects = connectingCable[id];
-            for(const connected in connects){
-                let connectedHex = document.querySelector(`#${connected} .hexagon`);
-                connectedHex.style.backgroundColor = "";
+        let hexagons = center.querySelectorAll('.hexagon');
+        hexagons.forEach(hexagon => {
+            hexagon.style.backgroundColor = "";
+            if(isDebug){
+                let connects = connectingCable[id];
+                for(const connected in connects){
+                    let connectedHexs = document.querySelectorAll(`#${connected} .hexagon`);
+                    connectedHexs.forEach(connectedHex => {
+                        connectedHex.style.backgroundColor = "";
+                    });
+                }
             }
-        }
+        });
     }, false);
     let checkbox = hex.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('click', function(e){

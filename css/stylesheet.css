@@ -117,7 +117,7 @@ input[type="checkbox"]:checked + .center{
 .hexagon:after {
     transform: rotate(-60deg);
 }
-.center {
+.origin, .pseudo {
     position: fixed;
     transform: translate(-50%, -50%);
 }
@@ -127,25 +127,25 @@ input[type="checkbox"]:checked + .center{
 }
 
 /* top */
-#q .pseudo.clockwise, #pseudo-r .origin, #pseudo-s1 .origin, #h .pseudo.clockwise{
+#q .pseudo.clockwise, #r .pseudo, #s .pseudo.anticlockwise, #h .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y03));
 }
-#a .origin, #b .origin, #c .origin, #pseudo-l1 .origin, #pseudo-m .origin{
+#a .origin, #b .origin, #c .origin, #l .pseudo.anticlockwise, #m .pseudo{
     top:  calc(var(--y-center) + var(--relative-y02));
 }
-#d .origin, #e .origin, #f .origin, #g .origin, #pseudo-p .origin, #pseudo-q1 .origin{
+#d .origin, #e .origin, #f .origin, #g .origin, #p .pseudo, #q .pseudo.anticlockwise{
     top:  calc(var(--y-center) + var(--relative-y01));
 }
 #h .origin, #i .origin, #j .origin, #k .origin, #l .origin, #s .pseudo.clockwise, #a .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y0));
 }
-#m .origin, #n .origin, #o .origin, #p .origin, #pseudo-c1 .origin, #pseudo-d .origin{
+#m .origin, #n .origin, #o .origin, #p .origin, #c .pseudo.anticlockwise, #d .pseudo{
     top:  calc(var(--y-center) + var(--relative-y1));
 }
-#q .origin, #r .origin, #s .origin, #pseudo-g .origin, #pseudo-h1 .origin{
+#q .origin, #r .origin, #s .origin, #g .pseudo, #h .pseudo.anticlockwise{
     top:  calc(var(--y-center) + var(--relative-y2));
 }
-#l .pseudo.clockwise, #pseudo-a1 .origin, #pseudo-b .origin, #c .pseudo.clockwise{
+#l .pseudo.clockwise, #a .pseudo.anticlockwise, #b .pseudo, #c .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y3));
 }
 
@@ -153,10 +153,10 @@ input[type="checkbox"]:checked + .center{
 #s .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x06));
 }
-#pseudo-p .origin, #pseudo-c1 .origin{
+#p .pseudo, #c .pseudo.anticlockwise{
     left:  calc(var(--x-center) + var(--relative-x05));
 }
-#h .origin, #pseudo-l1 .origin, #pseudo-g .origin{
+#h .origin, #l .pseudo.anticlockwise, #g .pseudo{
     left:  calc(var(--x-center) + var(--relative-x04));
 }
 #d .origin, #m .origin, #q .pseudo.clockwise, #l .pseudo.clockwise{
@@ -165,13 +165,13 @@ input[type="checkbox"]:checked + .center{
 #a .origin, #i .origin, #q .origin{
     left:  calc(var(--x-center) + var(--relative-x02));
 }
-#e .origin, #n .origin, #pseudo-r .origin, #pseudo-a1 .origin{
+#e .origin, #n .origin, #r .pseudo, #a .pseudo.anticlockwise{
     left:  calc(var(--x-center) + var(--relative-x01));
 }
 #b .origin, #j .origin, #r .origin{
     left:  calc(var(--x-center) + var(--relative-x0));
 }
-#f .origin, #o .origin, #pseudo-s1 .origin, #pseudo-b .origin{
+#f .origin, #o .origin, #s .pseudo.anticlockwise, #b .pseudo{
     left:  calc(var(--x-center) + var(--relative-x1));
 }
 #c .origin, #k .origin, #s .origin{
@@ -180,10 +180,10 @@ input[type="checkbox"]:checked + .center{
 #g .origin, #p .origin, #h .pseudo.clockwise, #c .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x3));
 }
-#l .origin, #pseudo-m .origin, #pseudo-h1 .origin{
+#l .origin, #m .pseudo, #h .pseudo.anticlockwise{
     left:  calc(var(--x-center) + var(--relative-x4));
 }
-#pseudo-q1 .origin, #pseudo-d .origin{
+#q .pseudo.anticlockwise, #d .pseudo{
     left:  calc(var(--x-center) + var(--relative-x5));
 }
 #a .pseudo.clockwise{
