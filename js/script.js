@@ -222,6 +222,12 @@ idList.forEach(id => {
                     hexes[id] = getNew();
                 });
                 connectingTable = makeConnectingTable(connectingCable);
+
+                bellSound.currentTime = 0;
+                bellSound.play();
+                setTimeout(() => {bellSound.pause();} , 1000);
+                vibrate();
+
                 scoreUp(checkedHexes);
                 if(isCycled()){
                     mixHexes();
@@ -233,6 +239,10 @@ idList.forEach(id => {
         if(isDebug){console.log(checkedHexes);}
     }, false);
 });
+
+const bellSoundUrl = url.hostname=="chomu37.github.io" ? './static/sound/bell.mp3' : 'https://chomu37.github.io/hex-link/static/sound/bell.mp3';
+const bellSound = new Audio(bellSoundUrl);
+bellSound.loop = false;
 
 function isConnected(current, next){
     if(isConnectable(current, next)){
@@ -261,6 +271,14 @@ function scoreUp(list){
     score += list.length ** 2;
     let scoreElement = document.querySelector('#score');
     scoreElement.innerHTML = score;
+}
+
+navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate; 
+
+function vibrate(){
+    if (navigator.vibrate) {
+        navigator.vibrate(300); // unit: ms
+    }
 }
 
 // 모든 체크박스의 체크 상태를 취소합니다.
