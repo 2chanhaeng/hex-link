@@ -34,7 +34,7 @@ idList.forEach(id => {
     const center = document.createElement('label');
     center.classList.add('center');
     center.setAttribute('for', `${id}-checkbox`);
-    center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
+    center.innerHTML = '<div class="origin"><div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div></div>';
     cell.appendChild(center);
 
     view.appendChild(cell);
@@ -43,23 +43,17 @@ idList.forEach(id => {
 const vertexList = ["a", "c", "h", "l", "q", "s"];
 vertexList.forEach(id => {
     for(let i = 0; i < 2; i++){
-        const cell = document.createElement('div');
-        cell.classList.add('pseudo');
-        cell.classList.add('cell');
-        cell.id = `pseudo-${id}${i}`;
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `pseudo-${id}${i}-checkbox`;
-        cell.appendChild(checkbox);
-
-        const center = document.createElement('label');
-        center.classList.add('center');
-        center.setAttribute('for', `pseudo-${id}${i}-checkbox`);
-        center.innerHTML = '<div class="z pipe"></div>\n<div class="y pipe"></div>\n<div class="x pipe"></div>\n<div class="w pipe"></div>\n<div class="v pipe"></div>\n<div class="u pipe"></div>\n<div class="hexagon"></div>';
-        cell.appendChild(center);
-
-        view.appendChild(cell);
+        const cell = document.querySelector(`#${id}`);
+        const origin = cell.querySelector(".origin");
+        const pseudo = origin.cloneNode(true);
+        pseudo.classList.add(`pseudo`);
+        if(i){
+            pseudo.classList.add(`anticlockwise`);
+        }else{
+            pseudo.classList.add(`clockwise`);
+        }
+        pseudo.classList.remove(`origin`);
+        cell.querySelector(".center").appendChild(pseudo);
     }
 });
 
@@ -83,6 +77,12 @@ sideList.forEach(id => {
 
     view.appendChild(cell);
 });
+
+function forBoundaryCell(id, callback){
+    callback(id);
+    if(sideList.includes(id)){callback(`pesudo-${id}`);}
+    else if(vertexList.includes(id)){for(let i = 0; i < 2; i++){callback(`pesudo-${id}${i}`);}}
+}
 
 const connectingCable = {
     "a": {"b":1, "r":2, "q":4, "l":8, "d":16, "e":32},
@@ -136,12 +136,16 @@ function writeHexes(obj){
     }   
 }
 
-function displayPipes(obj){
-    for (let id in obj){
-        let hexCenter = document.querySelector(`#${id} .center`)
-        hexCenter.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
-        paraByCase(obj[id],function(a){hexCenter.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
+function displayAllCellPipe(obj){
+    for (const id in obj){
+        forBoundaryCell(id, displayPipes)
     }
+}
+
+function displayPipes(id){
+    let hexCenter = document.querySelector(`#${id} .center`)
+    hexCenter.querySelectorAll('.pipe').forEach(pipe => pipe.style.display = '');
+    paraByCase(obj[id],function(a){hexCenter.querySelector(a).style.display = 'block';},'.z','.y','.x','.w','.v','.u',null);
 }
 
 function caseby(para, one, two, four, eight, sixteen, thirtytwo, notofthem){
@@ -274,7 +278,7 @@ function cancelAllCheckedCheckbox(){
 function mixHexes(list = hexes){
     cancelAllCheckedCheckbox();
     writeHexes(list);
-    displayPipes(list);
+    displayAllCellPipe(list);
 }
 
 function mixAllHex(){
@@ -285,7 +289,7 @@ function mixAllHex(){
         if(isCycled()){break;}
     }
     writeHexes(hexes);
-    displayPipes(hexes);
+    displayAllCellPipe(hexes);
 }
 
 function makeConnectingTable(obj = connectingCable){

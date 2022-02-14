@@ -127,66 +127,66 @@ input[type="checkbox"]:checked + .center{
 }
 
 /* top */
-#pseudo-q0 .center, #pseudo-r .center, #pseudo-s1 .center, #pseudo-h0 .center{
+#q .pseudo.clockwise, #pseudo-r .origin, #pseudo-s1 .origin, #h .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y03));
 }
-#a .center, #b .center, #c .center, #pseudo-l1 .center, #pseudo-m .center{
+#a .origin, #b .origin, #c .origin, #pseudo-l1 .origin, #pseudo-m .origin{
     top:  calc(var(--y-center) + var(--relative-y02));
 }
-#d .center, #e .center, #f .center, #g .center, #pseudo-p .center, #pseudo-q1 .center{
+#d .origin, #e .origin, #f .origin, #g .origin, #pseudo-p .origin, #pseudo-q1 .origin{
     top:  calc(var(--y-center) + var(--relative-y01));
 }
-#h .center, #i .center, #j .center, #k .center, #l .center, #pseudo-s0 .center, #pseudo-a0 .center{
+#h .origin, #i .origin, #j .origin, #k .origin, #l .origin, #s .pseudo.clockwise, #a .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y0));
 }
-#m .center, #n .center, #o .center, #p .center, #pseudo-c1 .center, #pseudo-d .center{
+#m .origin, #n .origin, #o .origin, #p .origin, #pseudo-c1 .origin, #pseudo-d .origin{
     top:  calc(var(--y-center) + var(--relative-y1));
 }
-#q .center, #r .center, #s .center, #pseudo-g .center, #pseudo-h1 .center{
+#q .origin, #r .origin, #s .origin, #pseudo-g .origin, #pseudo-h1 .origin{
     top:  calc(var(--y-center) + var(--relative-y2));
 }
-#pseudo-l0 .center, #pseudo-a1 .center, #pseudo-b .center, #pseudo-c0 .center{
+#l .pseudo.clockwise, #pseudo-a1 .origin, #pseudo-b .origin, #c .pseudo.clockwise{
     top:  calc(var(--y-center) + var(--relative-y3));
 }
 
 /* left */
-#pseudo-s0 .center{
+#s .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x06));
 }
-#pseudo-p .center, #pseudo-c1 .center{
+#pseudo-p .origin, #pseudo-c1 .origin{
     left:  calc(var(--x-center) + var(--relative-x05));
 }
-#h .center, #pseudo-l1 .center, #pseudo-g .center{
+#h .origin, #pseudo-l1 .origin, #pseudo-g .origin{
     left:  calc(var(--x-center) + var(--relative-x04));
 }
-#d .center, #m .center, #pseudo-q0 .center, #pseudo-l0 .center{
+#d .origin, #m .origin, #q .pseudo.clockwise, #l .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x03));
 }
-#a .center, #i .center, #q .center{
+#a .origin, #i .origin, #q .origin{
     left:  calc(var(--x-center) + var(--relative-x02));
 }
-#e .center, #n .center, #pseudo-r .center, #pseudo-a1 .center{
+#e .origin, #n .origin, #pseudo-r .origin, #pseudo-a1 .origin{
     left:  calc(var(--x-center) + var(--relative-x01));
 }
-#b .center, #j .center, #r .center{
+#b .origin, #j .origin, #r .origin{
     left:  calc(var(--x-center) + var(--relative-x0));
 }
-#f .center, #o .center, #pseudo-s1 .center, #pseudo-b .center{
+#f .origin, #o .origin, #pseudo-s1 .origin, #pseudo-b .origin{
     left:  calc(var(--x-center) + var(--relative-x1));
 }
-#c .center, #k .center, #s .center{
+#c .origin, #k .origin, #s .origin{
     left:  calc(var(--x-center) + var(--relative-x2));
 }
-#g .center, #p .center, #pseudo-h0 .center, #pseudo-c0 .center{
+#g .origin, #p .origin, #h .pseudo.clockwise, #c .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x3));
 }
-#l .center, #pseudo-m .center, #pseudo-h1 .center{
+#l .origin, #pseudo-m .origin, #pseudo-h1 .origin{
     left:  calc(var(--x-center) + var(--relative-x4));
 }
-#pseudo-q1 .center, #pseudo-d .center{
+#pseudo-q1 .origin, #pseudo-d .origin{
     left:  calc(var(--x-center) + var(--relative-x5));
 }
-#pseudo-a0 .center{
+#a .pseudo.clockwise{
     left:  calc(var(--x-center) + var(--relative-x6));
 }
 
