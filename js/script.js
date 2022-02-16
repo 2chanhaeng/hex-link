@@ -216,26 +216,26 @@ idList.forEach(id => {
             }else{
                 checkbox.checked = false;
             }
-            if(isRinged(checkedHexes)){
-                if(isDebug){console.log(checkedHexes);}
-                checkedHexes.forEach(function(id){
-                    hexes[id] = getNew();
-                });
-                connectingTable = makeConnectingTable(connectingCable);
-
-                bellSound.currentTime = 0;
-                bellSound.play();
-                setTimeout(() => {bellSound.pause();} , 1000);
-                vibrate();
-
-                scoreUp(checkedHexes);
-                if(isCycled()){
-                    mixHexes();
-                }else{
-                    mixAllHex();
-                }
-            };
         }
+        if(isRinged(checkedHexes)){
+            if(isDebug){console.log(checkedHexes);}
+            checkedHexes.forEach(function(id){
+                hexes[id] = getNew();
+            });
+            connectingTable = makeConnectingTable(connectingCable);
+
+            bellSound.currentTime = 0;
+            bellSound.play();
+            setTimeout(() => {bellSound.pause();} , 1000);
+            vibrate();
+
+            scoreUp(checkedHexes);
+            if(isCycled()){
+                mixHexes();
+            }else{
+                mixAllHex();
+            }
+        };
         if(isDebug){console.log(checkedHexes);}
     }, false);
 });
