@@ -345,6 +345,30 @@ function isCycled(obj = connectingTable){
     return length > 2;
 }
 
+// make timer
+const timer = document.querySelector('#timer');
+let timerInterval;
+function startTimer(){
+    let time = 0;
+    let timerId = setInterval(() => {
+        time += 1;
+        timer.querySelector('text').innerHTML = time/10;
+    }, 100);
+    return timerId;
+}
+
+function toggleTimer(){
+    if(timerInterval){
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }else{
+        timerInterval = startTimer();
+    }
+}
+
+timer.addEventListener('click', toggleTimer);
+
+
 function start(){
     mixAllHex();
     scoreUp([]);
