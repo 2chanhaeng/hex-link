@@ -348,26 +348,38 @@ function isCycled(obj = connectingTable){
 // make timer
 const timer = document.querySelector('#timer');
 let timerInterval;
-function startTimer(){
-    let time = 0;
+function startTimer(limit = 60){
+    const magni = 10;
+    let time = limit * magni;
     let timerId = setInterval(() => {
-        time += 1;
+        time -= 1;
         timer.querySelector('text').innerHTML = time/10;
-    }, 100);
+        if(isDebug & time % 10 == 0){console.log(time)}
+        if(time <= 0){
+            toggleTimer();
+            timer.querySelector('text').innerHTML = 0;
+            // mixAllHex();
+            alertScore()
+        }
+    }, 1000 / magni);
     return timerId;
 }
 
-function toggleTimer(){
+function toggleTimer(limit = 60){
     if(timerInterval){
         clearInterval(timerInterval);
         timerInterval = null;
     }else{
-        timerInterval = startTimer();
+        score = 0;
+        timerInterval = startTimer(limit);
     }
 }
 
-timer.addEventListener('click', toggleTimer);
+timer.addEventListener('click', () => {toggleTimer(20);});
 
+function alertScore(alertedScore = score){
+    alert('score : ' + alertedScore);
+}
 
 function start(){
     mixAllHex();
