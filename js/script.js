@@ -396,4 +396,10 @@ function alertScore(alertedScore = score){
     alert('score : ' + alertedScore);
 }
 
-timer.addEventListener('click', () => {toggleTimer(60);});
+const mode = url.searchParams.get('mode');
+
+if (mode == 'timer'){
+    timer.addEventListener('click', () => {toggleTimer(60);});
+}else{
+    start();
+}
