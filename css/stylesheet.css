@@ -1,13 +1,20 @@
+#timer{
+    position: absolute;
+    top: calc(var(--hexagon-width) * 0.6);
+    left: calc(var(--controls-side-margin));
+    width: var(--hexagon-width);
+    height: var(--hexagon-width);
+}
 
 #controls > * {
-    position: absolute;
-    right: var(--controls-side-margin);
     /* display: inline-block; */
 }
 #view{
     position: absolute;
 }
 #score, #mixAllHex + label, #cancelAllCheckedCheckbox + label{
+    position: absolute;
+    right: var(--controls-side-margin);
 }
 
 #score{
