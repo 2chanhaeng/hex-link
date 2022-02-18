@@ -36,4 +36,5 @@ function toggleTimer(limit = 60){
 function alertScore(alertedScore = score){
     alert('score : ' + alertedScore);
 }
+timer.innerHTML = '<circle cx="50" cy="50" r="50" fill="#FDB900"/>\n<path fill="none" stroke-linecap="round" stroke-width="10" stroke="#fff"\nstroke-dasharray="0,250"\nd="M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"/>\n<text x="50" y="50" text-anchor="middle" dy="7" font-size="20">Start!</text>'
 timer.addEventListener('click', () => {toggleTimer(60);});
