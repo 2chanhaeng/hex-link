@@ -2,6 +2,28 @@
 
 // make timer
 const timer = document.querySelector('#timer');
+
+// const timerBG = document.createElement('circle');
+// for(const [attribute, value] of Object.entries({"cx": "50", "cy": "50", "r": "50", "fill": "#FDB900"})){
+//     timerBG.setAttribute(attribute, value);
+// }
+
+// const timerHand = document.createElement('path');
+// for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "0,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
+//     timerHand.setAttribute(attribute, value);
+// }
+
+// const timerText = document.createElement('text');
+// for(const [attribute, value] of Object.entries({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"})){
+//     timerText.setAttribute(attribute, value);
+// }
+// timerText.innerHTML = 'Start';
+
+// [timerBG, timerHand, timerText].forEach(element => timer.appendChild(element));
+
+timer.innerHTML = '<circle cx="50%" cy="50%" r="50%" fill="#FDB900"/>\n<path fill="none" stroke-linecap="round" stroke-width="10" stroke="#fff"\nstroke-dasharray="0,250"\nd="M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"/>\n<text x="50%" y="50%" text-anchor="middle" dy="0" font-size="50%">Start!</text>'
+const timerHand = document.createElement('path');
+
 let timerInterval;
 
 function startTimer(limit = 60){
@@ -10,10 +32,12 @@ function startTimer(limit = 60){
     let timerId = setInterval(() => {
         time -= 1;
         timer.querySelector('text').innerHTML = time / magni;
+        rotateTimerHand(time, limit * magni);
         if(isDebug & time % 10 == 0){console.log(time)}
         if(time <= 0){
             toggleTimer();
             timer.querySelector('text').innerHTML = 0;
+            rotateTimerHand(0, limit);
             // mixAllHex();
             alertScore();
             reset();
@@ -33,8 +57,11 @@ function toggleTimer(limit = 60){
     }
 }
 
+function rotateTimerHand(currnet, limit, total = 250.2){
+    timerHand.setAttribute('stroke-dasharray', `${currnet / limit * total},${total}`);
+}
+
 function alertScore(alertedScore = score){
     alert('score : ' + alertedScore);
 }
-timer.innerHTML = '<circle cx="50" cy="50" r="50" fill="#FDB900"/>\n<path fill="none" stroke-linecap="round" stroke-width="10" stroke="#fff"\nstroke-dasharray="0,250"\nd="M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"/>\n<text x="50" y="50" text-anchor="middle" dy="7" font-size="20">Start!</text>'
 timer.addEventListener('click', () => {toggleTimer(60);});

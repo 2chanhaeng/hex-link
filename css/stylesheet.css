@@ -5,6 +5,14 @@
     width: var(--hexagon-width);
     height: var(--hexagon-width);
 }
+#timer > *{
+    display: block;
+    width: inherit;
+    height: inherit;
+}
+#timer > circle{
+    fill: var(--btn-color);
+}
 
 #controls > * {
     /* display: inline-block; */
