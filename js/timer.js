@@ -36,3 +36,4 @@ function toggleTimer(limit = 60){
 function alertScore(alertedScore = score){
     alert('score : ' + alertedScore);
 }
+timer.addEventListener('click', () => {toggleTimer(60);});
