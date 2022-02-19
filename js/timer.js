@@ -15,7 +15,7 @@ for(const [attribute, value] of Object.entries({"cx": "50", "cy": "50", "r": "50
 }
 
 const timerHand = document.createElementNS(svgns, 'path');
-for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "0,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
+for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "250,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
     timerHand.setAttribute(attribute, value);
 }
 
@@ -45,6 +45,7 @@ function startTimer(limit = 60){
             // mixAllHex();
             alertScore();
             timerText.innerHTML = 'Start';
+            rotateTimerHand(limit * magni, limit * magni);
             reset();
         }
     }, 1000 / magni);
