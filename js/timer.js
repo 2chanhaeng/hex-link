@@ -44,6 +44,7 @@ function startTimer(limit = 60){
             rotateTimerHand(0, limit);
             // mixAllHex();
             alertScore();
+            timerText.innerHTML = 'Start';
             reset();
         }
     }, 1000 / magni);
