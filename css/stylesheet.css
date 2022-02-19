@@ -5,13 +5,14 @@
     width: var(--hexagon-width);
     height: var(--hexagon-width);
 }
-#timer > *{
-    display: block;
-    width: inherit;
-    height: inherit;
-}
 #timer > circle{
     fill: var(--btn-color);
+}
+#timer > path{
+    stroke: var(--btn-checked-color);
+}
+#timer > text{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 #controls > * {

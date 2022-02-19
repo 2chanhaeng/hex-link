@@ -1,32 +1,32 @@
 "use strict";
 
 // make timer
-const timer = document.querySelector('#timer');
+const svgns = "http://www.w3.org/2000/svg";
 
-timer.innerHTML = '<circle cx="50" cy="50" r="50" fill="#FDB900"/><path fill="none" stroke-linecap="round" stroke-width="10" stroke="#00f" d="M50 10 a 40 40 0 0 1 0 80"/><text x="50" y="50" text-anchor="middle" dy="5" font-size="150%">60.00</text>';
-const timerHand = document.createElement('path');
+const timer = document.createElementNS(svgns, 'svg');
+for(const [attribute, value] of Object.entries({"id": "timer", "viewBox": "0 0 100 100"})){
+    timer.setAttribute(attribute, value);
+}
 
-// const timer = document.createElement('svg');
-// timer.setAttribute('id', 'timer');
+timer.setAttribute('id', 'timer');
+const timerBG = document.createElementNS(svgns, 'circle');
+for(const [attribute, value] of Object.entries({"cx": "50", "cy": "50", "r": "50"})){
+    timerBG.setAttribute(attribute, value);
+}
 
-// const timerBG = document.createElement('circle');
-// for(const [attribute, value] of Object.entries({"cx": "50%", "cy": "50%", "r": "50%", "fill": "#FDB900"})){
-//     timerBG.setAttribute(attribute, value);
-// }
+const timerHand = document.createElementNS(svgns, 'path');
+for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "0,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
+    timerHand.setAttribute(attribute, value);
+}
 
-// const timerHand = document.createElement('path');
-// for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "0,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
-//     timerHand.setAttribute(attribute, value);
-// }
+const timerText = document.createElementNS(svgns, 'text');
+for(const [attribute, value] of Object.entries({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"})){
+    timerText.setAttribute(attribute, value);
+}
+timerText.innerHTML = 'Start';
+document.querySelector('#controls').appendChild(timer);
 
-// const timerText = document.createElement('text');
-// for(const [attribute, value] of Object.entries({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"})){
-//     timerText.setAttribute(attribute, value);
-// }
-// timerText.innerHTML = 'Start';
-// document.querySelector('#controls').appendChild(timer);
-
-// [timerBG, timerHand, timerText].forEach(element => timer.appendChild(element));
+[timerBG, timerHand, timerText].forEach(element => timer.appendChild(element));
 
 let timerInterval;
 
