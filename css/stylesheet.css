@@ -246,8 +246,8 @@ input[type="checkbox"]:checked + .center{
 }
 @media (prefers-color-scheme: light) {
     :root{
-        --btn-color: #00ffff;
-        --btn-checked-color: #C00000;
+        --btn-color: #C00000;
+        --btn-checked-color: #00ffff;
     }
     h1,h2,h3,p {
         color: #000;
