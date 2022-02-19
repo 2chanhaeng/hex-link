@@ -3,8 +3,14 @@
 // make timer
 const timer = document.querySelector('#timer');
 
+timer.innerHTML = '<circle cx="50" cy="50" r="50" fill="#FDB900"/><path fill="none" stroke-linecap="round" stroke-width="10" stroke="#00f" d="M50 10 a 40 40 0 0 1 0 80"/><text x="50" y="50" text-anchor="middle" dy="5" font-size="150%">60.00</text>';
+const timerHand = document.createElement('path');
+
+// const timer = document.createElement('svg');
+// timer.setAttribute('id', 'timer');
+
 // const timerBG = document.createElement('circle');
-// for(const [attribute, value] of Object.entries({"cx": "50", "cy": "50", "r": "50", "fill": "#FDB900"})){
+// for(const [attribute, value] of Object.entries({"cx": "50%", "cy": "50%", "r": "50%", "fill": "#FDB900"})){
 //     timerBG.setAttribute(attribute, value);
 // }
 
@@ -18,11 +24,9 @@ const timer = document.querySelector('#timer');
 //     timerText.setAttribute(attribute, value);
 // }
 // timerText.innerHTML = 'Start';
+// document.querySelector('#controls').appendChild(timer);
 
 // [timerBG, timerHand, timerText].forEach(element => timer.appendChild(element));
-
-timer.innerHTML = '<circle cx="50%" cy="50%" r="50%" fill="#FDB900"/>\n<path fill="none" stroke-linecap="round" stroke-width="10" stroke="#fff"\nstroke-dasharray="0,250"\nd="M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"/>\n<text x="50%" y="50%" text-anchor="middle" dy="0" font-size="50%">Start!</text>'
-const timerHand = document.createElement('path');
 
 let timerInterval;
 
