@@ -3,26 +3,23 @@
 // make timer
 const svgns = "http://www.w3.org/2000/svg";
 
-const timer = document.createElementNS(svgns, 'svg');
-for(const [attribute, value] of Object.entries({"id": "timer", "viewBox": "0 0 100 100"})){
-    timer.setAttribute(attribute, value);
+Element.prototype.setAttributes = function (attrs){
+    for(let key in attrs){
+        this.setAttribute(key, attrs[key]);
+    }
 }
 
-timer.setAttribute('id', 'timer');
+const timer = document.createElementNS(svgns, 'svg');
+timer.setAttributes({"id": "timer", "viewBox": "0 0 100 100"});
+
 const timerBG = document.createElementNS(svgns, 'circle');
-for(const [attribute, value] of Object.entries({"cx": "50", "cy": "50", "r": "50"})){
-    timerBG.setAttribute(attribute, value);
-}
+timerBG.setAttributes({"cx": "50", "cy": "50", "r": "50"});
 
 const timerHand = document.createElementNS(svgns, 'path');
-for(const [attribute, value] of Object.entries({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "250,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"})){
-    timerHand.setAttribute(attribute, value);
-}
+timerHand.setAttributes({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "250,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"});
 
 const timerText = document.createElementNS(svgns, 'text');
-for(const [attribute, value] of Object.entries({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"})){
-    timerText.setAttribute(attribute, value);
-}
+timerText.setAttributes({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"});
 timerText.innerHTML = 'Start';
 document.querySelector('#controls').appendChild(timer);
 
