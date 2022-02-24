@@ -1,14 +1,27 @@
-#board{
+.board-deactive{
     width: 100px;
     height: 100px;
     transition: 1s;
 }
-#board > path{
+.board-deactive > path{
     fill: #ff0;
+    d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
+    transition: 1s;
+}
+
+.board-active{
+    width: 200px;
+    height: 200px;
+    transition: 1s;
+}
+
+.board-active > path {
+    fill: blue;
     d: path("m 20 0 a 20 20 90 0 0 -20 20 l 0 60 a 20 20 90 0 0 20 20 l 60 0 a 20 20 90 0 0 20 -20 l 0 -60 a 20 20 90 0 0 -20 -20 l -60 0");
     transition: 1s;
 }
-#board:hover{
+
+/* #board:hover{
     width: 200px;
     height: 200px;
     transition: 1s;
@@ -17,23 +30,54 @@
     transition: 1s;
     fill: blue;
     d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
-  }
+} */
 #timer{
     position: absolute;
     top: calc(var(--hexagon-width) * 0.6);
     left: calc(var(--controls-side-margin));
+    transition: 1s;
+}
+#timer > #timerBG{
+    fill: var(--btn-color);
+    transition: 1s;
+}
+#timer > #timerHand{
+    stroke: var(--btn-checked-color);
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 10;
+    transition: 1s;
+}
+#timer > #timerText{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    text-anchor: middle;
+    font-size: 20;
+    transition: 1s;
+}
+#timer.timer{
     width: var(--hexagon-width);
     height: var(--hexagon-width);
 }
-#timer > circle{
-    fill: var(--btn-color);
+#timer.timer > #timerBG{
 }
-#timer > path{
-    stroke: var(--btn-checked-color);
+#timer.timer > #timerHand{
+    d: path("M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80");
 }
-#timer > text{
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+#timer.timer > #timerText{
 }
+
+#timer.board{
+    width: calc(var(--hexagon-width) * 2);
+    height: calc(var(--hexagon-width) * 2);
+}
+#timer.board > #timerBG{
+}
+#timer.board > #timerHand{
+    d: path("M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80");
+}
+#timer.board > #timerText{
+}
+
 
 #view{
     position: absolute;
@@ -44,6 +88,7 @@
 }
 
 #score{
+    top: calc(var(--hexagon-width) * 0.6);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: calc(2 * var(--hexagon-width)/3);
     font-weight: bold;

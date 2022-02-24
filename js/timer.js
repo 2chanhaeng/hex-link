@@ -10,19 +10,19 @@ Element.prototype.setAttributes = function (attrs){
 }
 
 const timer = document.createElementNS(svgns, 'svg');
-timer.setAttributes({"id": "timer", "viewBox": "0 0 100 100"});
+timer.setAttributes({"id": "timer", "viewBox": "0 0 100 100", "class": "timer"});
 
 const timerBG = document.createElementNS(svgns, 'circle');
-timerBG.setAttributes({"cx": "50", "cy": "50", "r": "50"});
+timerBG.setAttributes({'id': 'timerBG', "cx": 50, "cy": 50, "r": 50});
 
 const timerHand = document.createElementNS(svgns, 'path');
-timerHand.setAttributes({"fill": "none", "stroke-linecap": "round", "stroke-width": "10", "stroke": "#fff", "stroke-dasharray": "250,250", "d": "M50 10\n a 40 40 0 0 1 0 80\n a 40 40 0 0 1 0 -80"});
+timerHand.setAttributes({'id': 'timerHand', "stroke-dasharray": "250,250", "x": 50, "y": 50});
 
 const timerText = document.createElementNS(svgns, 'text');
-timerText.setAttributes({"x": "50" , "y": "50", "text-anchor": "middle" , "dy": "7", "font-size": "20"});
+timerText.setAttributes({'id': 'timerText', "x": 50, "y": 50, "dy":7});
 timerText.innerHTML = 'Start';
-document.querySelector('#controls').appendChild(timer);
 
+document.querySelector('#controls').appendChild(timer);
 [timerBG, timerHand, timerText].forEach(element => timer.appendChild(element));
 
 let timerInterval;
@@ -65,6 +65,20 @@ function rotateTimerHand(currnet, limit, total = 250.2){
 }
 
 function alertScore(alertedScore = score){
+    timer.classList.remove('timer');
+    timer.classList.add('board');
     alert('score : ' + alertedScore);
 }
 timer.addEventListener('click', () => {toggleTimer(60);});
+
+// #board 클릭 시 만약 .borad-active 클래스라면 클래스를 제거하고 아니라면 클래스를 추가합니다.
+const board = document.querySelector('#board')
+board.addEventListener('click', (event) => {
+    if(board.classList.contains('board-active')){
+        board.classList.add('board-deactive');
+        board.classList.remove('board-active');
+    }else{
+        board.classList.remove('board-deactive');
+        board.classList.add('board-active');
+    }
+});
