@@ -41,8 +41,6 @@ function startTimer(limit = 60){
             rotateTimerHand(0, limit);
             // mixAllHex();
             alertScore();
-            timerText.innerHTML = 'Start';
-            rotateTimerHand(limit * magni, limit * magni);
             reset();
         }
     }, 1000 / magni);
@@ -50,13 +48,20 @@ function startTimer(limit = 60){
 }
 
 function toggleTimer(limit = 60){
-    if(timerInterval){
-        clearInterval(timerInterval);
-        timerInterval = null;
+    if(timer.classList.contains('board')){
+        timer.classList.remove('board');
+        timer.classList.add('timer');
+        timerText.textContent = 'Start';
+        timerHand.setAttribute('stroke-dasharray', '250.2,250.2');
     }else{
-        score = 0;
-        timerInterval = startTimer(limit);
-        start();
+        if(timerInterval){
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }else{
+            score = 0;
+            timerInterval = startTimer(limit);
+            start();
+        }
     }
 }
 
@@ -67,7 +72,7 @@ function rotateTimerHand(currnet, limit, total = 250.2){
 function alertScore(alertedScore = score){
     timer.classList.remove('timer');
     timer.classList.add('board');
-    alert('score : ' + alertedScore);
+    timerText.textContent = alertedScore;
 }
 timer.addEventListener('click', () => {toggleTimer(60);});
 

@@ -1,13 +1,10 @@
-#timer, #timer > *{
-    transition: 1s;
-}
 #timer{
     position: absolute;
-    top: calc(var(--hexagon-width) * 0.6);
-    left: calc(var(--controls-side-margin));
+    transition: 1s;
 }
 #timer > #timerBG{
     fill: var(--btn-color);
+    transition: 1s;
 }
 #timer > #timerHand{
     stroke: var(--btn-checked-color);
@@ -21,6 +18,8 @@
     font-size: 20;
 }
 #timer.timer{
+    top: calc(var(--hexagon-width) * 0.6);
+    left: calc(var(--controls-side-margin));
     width: var(--hexagon-width);
     height: var(--hexagon-width);
 }
@@ -34,8 +33,11 @@
 }
 
 #timer.board{
-    width: calc(var(--hexagon-width) * 2);
-    height: calc(var(--hexagon-width) * 2);
+    transform: translate(-50%, -50%);
+    top: 50vh;
+    left: 50vw;
+    width: calc(var(--hexagon-width) * 5);
+    height: calc(var(--hexagon-width) * 5);
 }
 #timer.board > #timerBG{
     d: path("m 20 0 a 20 20 90 0 0 -20 20 l 0 60 a 20 20 90 0 0 20 20 l 60 0 a 20 20 90 0 0 20 -20 l 0 -60 a 20 20 90 0 0 -20 -20 l -60 0");
