@@ -58,6 +58,7 @@
     height: var(--hexagon-width);
 }
 #timer.timer > #timerBG{
+    d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
 }
 #timer.timer > #timerHand{
     d: path("M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80");
@@ -70,9 +71,11 @@
     height: calc(var(--hexagon-width) * 2);
 }
 #timer.board > #timerBG{
+    d: path("m 20 0 a 20 20 90 0 0 -20 20 l 0 60 a 20 20 90 0 0 20 20 l 60 0 a 20 20 90 0 0 20 -20 l 0 -60 a 20 20 90 0 0 -20 -20 l -60 0");
 }
 #timer.board > #timerHand{
-    d: path("M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80");
+    d: path("M 25 10 a 15 15 90 0 0 -15 15 l 0 50 a 15 15 90 0 0 15 15 l 50 0 a 15 15 90 0 0 15 -15 l 0 -50 a 15 15 90 0 0 -15 -15 l -50 0");
+    stroke-dasharray: 0%;
 }
 #timer.board > #timerText{
 }

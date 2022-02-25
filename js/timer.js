@@ -12,11 +12,11 @@ Element.prototype.setAttributes = function (attrs){
 const timer = document.createElementNS(svgns, 'svg');
 timer.setAttributes({"id": "timer", "viewBox": "0 0 100 100", "class": "timer"});
 
-const timerBG = document.createElementNS(svgns, 'circle');
-timerBG.setAttributes({'id': 'timerBG', "cx": 50, "cy": 50, "r": 50});
+const timerBG = document.createElementNS(svgns, 'path');
+timerBG.setAttributes({'id': 'timerBG'});
 
 const timerHand = document.createElementNS(svgns, 'path');
-timerHand.setAttributes({'id': 'timerHand', "stroke-dasharray": "250,250", "x": 50, "y": 50});
+timerHand.setAttributes({'id': 'timerHand', "stroke-dasharray": "250,250"});
 
 const timerText = document.createElementNS(svgns, 'text');
 timerText.setAttributes({'id': 'timerText', "x": 50, "y": 50, "dy":7});
