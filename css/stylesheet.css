@@ -31,28 +31,27 @@
     fill: blue;
     d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
 } */
+#timer, #timer > *{
+    transition: 1s;
+}
 #timer{
     position: absolute;
     top: calc(var(--hexagon-width) * 0.6);
     left: calc(var(--controls-side-margin));
-    transition: 1s;
 }
 #timer > #timerBG{
     fill: var(--btn-color);
-    transition: 1s;
 }
 #timer > #timerHand{
     stroke: var(--btn-checked-color);
     fill: none;
     stroke-linecap: round;
     stroke-width: 10;
-    transition: 1s;
 }
 #timer > #timerText{
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-anchor: middle;
     font-size: 20;
-    transition: 1s;
 }
 #timer.timer{
     width: var(--hexagon-width);
