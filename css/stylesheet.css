@@ -1,36 +1,3 @@
-.board-deactive{
-    width: 100px;
-    height: 100px;
-    transition: 1s;
-}
-.board-deactive > path{
-    fill: #ff0;
-    d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
-    transition: 1s;
-}
-
-.board-active{
-    width: 200px;
-    height: 200px;
-    transition: 1s;
-}
-
-.board-active > path {
-    fill: blue;
-    d: path("m 20 0 a 20 20 90 0 0 -20 20 l 0 60 a 20 20 90 0 0 20 20 l 60 0 a 20 20 90 0 0 20 -20 l 0 -60 a 20 20 90 0 0 -20 -20 l -60 0");
-    transition: 1s;
-}
-
-/* #board:hover{
-    width: 200px;
-    height: 200px;
-    transition: 1s;
-}
-#board:hover > path {
-    transition: 1s;
-    fill: blue;
-    d: path("m 50 0 a 50 50 90 0 0 -50 50 l 0 0 a 50 50 90 0 0 50 50 l 0 0 a 50 50 90 0 0 50 -50 l 0 0 a 50 50 90 0 0 -50 -50 l 0 0");
-} */
 #timer, #timer > *{
     transition: 1s;
 }
