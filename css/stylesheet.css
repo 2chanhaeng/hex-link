@@ -55,11 +55,11 @@
 }
 #score, #mixAllHex + label, #cancelAllCheckedCheckbox + label{
     position: absolute;
-    right: var(--controls-side-margin);
+    right: calc(50vw - var(--hexagon-width) * 4);
 }
 
 #score{
-    top: calc(var(--hexagon-width) * 0.6);
+    top: calc(50vh - var(--hexagon-width) * 3.5);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: calc(2 * var(--hexagon-width)/3);
     font-weight: bold;
@@ -81,11 +81,11 @@
     font-size: calc(var(--hexagon-width) * 0.3);
 }
 #cancelAllCheckedCheckbox + label{
-    bottom: calc(var(--hexagon-width) * 0.6);
+    bottom: calc(50vh - var(--hexagon-width) * 2.4);
     background-color: red;
 }
 #mixAllHex + label{
-    bottom: calc(var(--hexagon-width) * 1.7);
+    bottom: calc(50vh - var(--hexagon-width) * 3.5);
     background-color: green;
 }
 
