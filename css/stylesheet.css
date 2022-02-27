@@ -65,11 +65,11 @@
     font-weight: bold;
 }
 
-#mixAllHex, #cancelAllCheckedCheckbox{
+#mixAllHex, #cancelAllCheckedCheckbox, #timerMode{
     display: none;
 }
 
-#mixAllHex + label, #cancelAllCheckedCheckbox + label{
+#mixAllHex + label, #cancelAllCheckedCheckbox + label, #timerMode + label{
     clip-path: circle(50% at 50% 50%);
     width: var(--hexagon-width);
     height: var(--hexagon-width);
@@ -80,13 +80,31 @@
     font-family: sans-serif, "Helvetica Neue", Helvetica, Arial;
     font-size: calc(var(--hexagon-width) * 0.3);
 }
-#cancelAllCheckedCheckbox + label{
+#mixAllHex + label{
     bottom: calc(50vh - var(--hexagon-width) * 2.4);
+    background-color: green;
+}
+#cancelAllCheckedCheckbox + label{
+    bottom: calc(50vh - var(--hexagon-width) * 3.5);
     background-color: red;
 }
-#mixAllHex + label{
+#timerMode + label{
+    position: absolute;
+    left: calc(50vw - var(--hexagon-width) * 4);
     bottom: calc(50vh - var(--hexagon-width) * 3.5);
-    background-color: green;
+    background-color: var(--btn-color);
+}
+#timerMode:checked + label{
+    background-color: var(--btn-checked-color);
+}
+#timerMode + label > p{
+    color: #000;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif, "Helvetica Neue", Helvetica, Arial;
+    font-size: calc(var(--hexagon-width) * 0.3);
+}
+#timerMode:checked + label > p{
+    color: #fff;
 }
 
 p {
