@@ -306,6 +306,9 @@ input[type="checkbox"]:checked + .center{
     body {
         background-color: #ffffff;
     }
+    svg > text{
+        fill: #fff;
+    }
 }
 @media (prefers-color-scheme: dark) {
     :root{
@@ -317,5 +320,8 @@ input[type="checkbox"]:checked + .center{
     }
     body {
         background-color: #000000;
+    }
+    svg > text{
+        fill: #000;
     }
 }
