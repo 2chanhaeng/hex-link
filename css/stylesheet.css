@@ -18,8 +18,8 @@
     font-size: 20;
 }
 #timer.timer{
-    top: calc(var(--hexagon-width) * 0.6);
-    left: calc(var(--controls-side-margin));
+    top: calc(50vh - var(--hexagon-width) * 3);
+    left: calc(50vw - var(--hexagon-width) * 4);
     width: var(--hexagon-width);
     height: var(--hexagon-width);
 }
