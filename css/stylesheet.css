@@ -111,6 +111,43 @@
     color: #fff;
 }
 
+#modeSwitch + label, #modeSwitch + label > span{
+    display: block;
+    position: absolute;
+}
+
+#modeSwitch + label:before,
+#modeSwitch + label:after,
+#modeSwitch + label span:before,
+#modeSwitch + label span:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+#modeSwitch + label span{
+    border-radius: 16px;
+    height: 32px;
+    width: 64px;
+    background: #e74c3c;
+    transition: background 0.4s ease-in;
+}
+#modeSwitch + label span:before{
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    left: 2px;
+    top: 2px;
+    background: #ECF0F1;
+    transition: left 0.4s ease-in;
+}
+#modeSwitch:checked + label span{
+    background: #2ecc71;
+}
+#modeSwitch:checked + label span:before{
+    left: 34px;
+}
+
 p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
