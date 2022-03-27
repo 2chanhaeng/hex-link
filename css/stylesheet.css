@@ -118,11 +118,11 @@
     font-size: calc(var(--hexagon-width) * 0.3);
 }
 #mixAllHex + label{
-    bottom: calc(50vh - var(--hexagon-width) * 2.4);
+    top: calc(50vh + var(--hexagon-width) * 1.4);
     background-color: green;
 }
 #cancelAllCheckedCheckbox + label{
-    bottom: calc(50vh - var(--hexagon-width) * 3.5);
+    top: calc(50vh + var(--hexagon-width) * 2.5);
     background-color: red;
 }
 
