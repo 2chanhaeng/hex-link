@@ -367,20 +367,25 @@ function reset(){
     score = 0;
 }
 
-const mode = url.searchParams.get('mode');
-const timerModeSwitch = document.querySelector('#timerMode');
-const tmsLabel = document.querySelector('label[for="timerMode"]');
-timerModeSwitch.addEventListener('click', () => {
-    if(mode == 'timer'){
-        url.searchParams.delete('mode');
-    }else{
-        url.searchParams.set('mode', 'timer');
-    }
-    window.open(url, '_self');
+const modeSwitch = document.querySelector("#modeSwitch");
+let isTimer = modeSwitch.checked;
+modeSwitch.addEventListener('click', () => {
+    isTimer = modeSwitch.checked;
+    chooseMode(isTimer)
 });
 
-if (mode == 'timer'){
-    import('./timer.js');
-}else{
-    start();
+function chooseMode(isTimer){
+    if (isTimer){
+        let makeTimer;
+        import('./timer.js').then(module => {
+            makeTimer = module.default;
+            reset();
+            makeTimer();
+        });
+    }else{
+        let timer = document.querySelector('#timer')
+        if(timer){timer.remove();}
+        start();
+    }
 }
+chooseMode(isTimer)
