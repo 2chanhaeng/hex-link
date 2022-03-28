@@ -7,15 +7,33 @@ function rand64(){
     return Math.floor(Math.random() * 61) + 3;
 }
 
-const hard = url.searchParams.get('hard');
-let banned_list = [0, 4, 8, 16, 32];
-if ((hard == null) || (hard != 'hard')){
-    banned_list = banned_list.concat([/*1*/ 3, 5, 9, 17, 33,/*2*/ 6, 10, 18, 34,/*4*/ 12, 20, 36,/*8*/ 24, 40,/*16*/ 48]);
+const difficulityRadio = document.querySelector('#difficultyRadio');
+const difficulityRadioList = difficulityRadio.querySelectorAll('#difficultyRadio > input');
+difficulityRadio.querySelector('#medium').checked = true;
+let difficulity = 'medium'
+difficulityRadioList.forEach(radio => {
+    radio.addEventListener('click', function(){
+        difficulity = this.value;
+        changeBannedList(difficulity);
+        reset();
+        start();
+    });
+})
+
+let bannedList = [0, 4, 8, 16, 32];
+let banned = new Set();
+function changeBannedList(difficulity = 'medium'){
+    let newBannedList = [0, 4, 8, 16, 32];
+    if (difficulity != 'hard'){
+        newBannedList = newBannedList.concat([/*1*/ 3, 5, 9, 17, 33,/*2*/ 6, 10, 18, 34,/*4*/ 12, 20, 36,/*8*/ 24, 40,/*16*/ 48]);
+    }
+    if (difficulity == 'easy'){
+        newBannedList = newBannedList.concat([/*3*/ 7, 11, 19, 35,/*5*/ 13, 21, 37,/*9*/ 25, 41,/*17*/ 49,/*6*/ 14, 22, 38,/*10*/ 26, 42,/*18*/ 50,/*12*/ 28, 44,/*20*/ 52,/*24*/ 56]);
+    }
+    bannedList = newBannedList;
+    banned = new Set(bannedList);
 }
-if (hard == 'easy'){
-    banned_list = banned_list.concat([/*3*/ 7, 11, 19, 35,/*5*/ 13, 21, 37,/*9*/ 25, 41,/*17*/ 49,/*6*/ 14, 22, 38,/*10*/ 26, 42,/*18*/ 50,/*12*/ 28, 44,/*20*/ 52,/*24*/ 56]);
-}
-const banned = new Set(banned_list);
+changeBannedList(difficulity);
 // 0, 4, 8, 16, 32 가 아닌 수가 나올 때까지 반복
 function getNew(){
     let result = 0
