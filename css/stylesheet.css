@@ -1,3 +1,15 @@
+#difficultyRadio > label {
+    display: inline-block;
+    text-align: right;
+    padding-right: 10px;
+    color: #fff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+#difficultyRadio > input:checked + label {
+    color: #000;
+    background-color: #ffff00;
+}
+
 #timer{
     position: absolute;
     transition: 1s;
@@ -169,7 +181,7 @@ p {
 input[type="checkbox"]:checked + .center .pipe{
     background-color: var(--btn-color);
 }
-input[type="checkbox"]{
+input[type="checkbox"], input[type="radio"]{
     display: none;
 }
 input[type="checkbox"] + .center{
