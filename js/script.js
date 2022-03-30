@@ -15,8 +15,7 @@ difficulityRadioList.forEach(radio => {
     radio.addEventListener('click', function(){
         difficulity = this.value;
         changeBannedList(difficulity);
-        reset();
-        start();
+        chooseMode(isTimer);
     });
 })
 
@@ -403,6 +402,7 @@ function chooseMode(isTimer){
     }else{
         let timer = document.querySelector('#timer')
         if(timer){timer.remove();}
+        reset();
         start();
     }
 }
