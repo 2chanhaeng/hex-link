@@ -1,5 +1,6 @@
 "use strict";
 
+
 const url = new URL(window.location.href);
 const isDebug = url.searchParams.get('debug') == 'true';
 // 3~63이 랜덤으로 나오는 함수
@@ -388,22 +389,22 @@ const modeSwitch = document.querySelector("#modeSwitch");
 let isTimer = modeSwitch.checked;
 modeSwitch.addEventListener('click', () => {
     isTimer = modeSwitch.checked;
-    chooseMode(isTimer)
+    chooseMode(isTimer);
 });
 
-function chooseMode(isTimer){
+async function chooseMode(isTimer){
+    const timerModule = await import('./timer.js');
     if (isTimer){
-        let makeTimer;
-        import('./timer.js').then(module => {
-            makeTimer = module.default;
-            reset();
-            makeTimer();
-        });
+        reset();
+        timerModule.makeTimer();
     }else{
         let timer = document.querySelector('#timer')
-        if(timer){timer.remove();}
+        if(timer){
+            timer.remove();
+            timerModule.stopTimer();
+        }
         reset();
         start();
     }
 }
-chooseMode(isTimer)
+chooseMode(isTimer);
