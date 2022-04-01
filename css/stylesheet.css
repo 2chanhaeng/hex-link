@@ -46,8 +46,6 @@
 #timer.timer > #timerHand{
     d: path("M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80");
 }
-#timer.timer > #timerText{
-}
 
 #timer.board{
     transform: translate(-50%, -50%);
@@ -62,8 +60,6 @@
 #timer.board > #timerHand{
     d: path("M 25 10 a 15 15 90 0 0 -15 15 l 0 50 a 15 15 90 0 0 15 15 l 50 0 a 15 15 90 0 0 15 -15 l 0 -50 a 15 15 90 0 0 -15 -15 l -50 0");
     stroke-dasharray: 0%;
-}
-#timer.board > #timerText{
 }
 
 #modeSwitch + label{
